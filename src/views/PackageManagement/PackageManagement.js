@@ -1,7 +1,7 @@
 import React from 'react'
 import PackageCard from './PackageCard'
 import PackageTable from './PackageTable'
-import './package.css'
+import './Package.css'
 
 const packages = [
   { name: 'Silver', price: '$10', duration: '1 Month', subscribers: 120, revenue: 1200 },

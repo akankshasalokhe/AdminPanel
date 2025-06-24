@@ -15,7 +15,7 @@ const PackageManagement = React.lazy(()=>import('./views/PackageManagement/Packa
 const Coin = React.lazy(()=>import('./views/Coin/Coin'))
 
 // Buttons
-const Gift=React.lazy(()=>import('./views/Engagement/gifts/gift'))
+const Gift=React.lazy(()=>import('./views/Engagement/gifts/Gift'))
 const GiftCategory= React.lazy(()=>import('./views/Engagement/giftCategory/GiftCategory'))
 const Dropdowns = React.lazy(() => import('./views/Engagement/dropdowns/Dropdowns'))
 

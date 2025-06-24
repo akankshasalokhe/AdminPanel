@@ -72,7 +72,7 @@ const UserManagement = () => {
   const totalPages = Math.ceil(filteredUsers.length / rowsPerPage);
 
   const summaryData = [
-    { image:<img src='../src/assets/icons/Frame 260.png'/>, title: 'Total Users', count: users.length },
+    { image:<img src='/icons/Frame260.png'/>, title: 'Total Users', count: users.length },
     { image:<img src='../src/assets/icons/Frame 260 (1).png'/>, title: 'Female', count: users.filter(u => u.gender === 'Female').length },
     { image:<img src='../src/assets/icons/Frame 260 (8).png'/>, title: 'Male', count: users.filter(u => u.gender === 'Male').length },
     { image:<img src='../src/assets/icons/Frame 260 (3).png'/>, title: 'Other', count: users.filter(u => u.gender === 'Other').length },

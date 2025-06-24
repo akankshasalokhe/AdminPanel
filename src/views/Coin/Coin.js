@@ -3,7 +3,7 @@ import './Coin.css';
 // import { FaUser, FaCrown, FaStar, FaGem, FaCoins, FaUsers } from 'react-icons/fa';
 
 const cardData = [
-  { title: 'Total Revenue', image:<img src="../src/assets/icons/Frame 278.png" alt=''/>, total: '₹5,00,000', month: '+12%' },
+  { title: 'Total Revenue', image:<img src="/icons/Frame 278.png" alt=''/>, total: '₹5,00,000', month: '+12%' },
   { title: 'VIP User', image:<img src="../src/assets/icons/Frame 278 (1).png" alt=''/>, total: '120', month: '+10%' },
   { title: 'Premium User', image:<img src="../src/assets/icons/Frame 278 (2).png" alt=''/>, total: '300', month: '+20.00%' },
   { title: 'Golden User',image:<img src="../src/assets/icons/Frame 278 (3).png" alt=''/>, total: '80', month: '+5%' },

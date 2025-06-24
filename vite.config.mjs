@@ -11,9 +11,7 @@ export default defineConfig(() => {
     },
     css: {
       postcss: {
-        plugins: [
-          autoprefixer({}), // add options if needed
-        ],
+        plugins: [autoprefixer()],
       },
     },
     esbuild: {
@@ -28,13 +26,13 @@ export default defineConfig(() => {
           '.js': 'jsx',
         },
       },
+      include: [
+        '@mui/x-date-pickers',
+        '@mui/material',
+        '@mui/icons-material',
+        'date-fns',
+      ],
     },
-     include: [
-    '@mui/x-date-pickers',
-    '@mui/material',
-    '@mui/icons-material',
-    'date-fns'
-  ],
     plugins: [react()],
     resolve: {
       alias: [
@@ -42,14 +40,15 @@ export default defineConfig(() => {
           find: 'src/',
           replacement: `${path.resolve(__dirname, 'src')}/`,
         },
+        {
+          find: '@mui/styled-engine',
+          replacement: '@mui/styled-engine-sc',
+        },
       ],
       extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.scss'],
     },
     server: {
       port: 3000,
-      proxy: {
-        // https://vitejs.dev/config/server-options.html
-      },
     },
   }
 })

@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+
+body {
+  font-family: 'Crimson Text', serif;
+}
+.img-div{
+        margin-left: 100px;
+}
+
+.img-div img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-col {
+  margin-bottom: 20px;
+}
+
+.info-card {
+  width: 318px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.personal-card {
+  height: 669px;
+}
+
+.preference-card {
+  height: 543px;
+}
+
+.info-card h5 {
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 18px;
+}
+/* Common card styles */
+.profile-card {
+  width: 794px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #fff;
+}
+
+/* Section-specific heights */
+.account-info {
+  height: 338px;
+}
+
+.account-status {
+  height: 217px;
+}
+
+/* Label-value pair styling for Account Info and Status */
+.info-item,
+.status-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.info-item label,
+.status-item label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.info-item span,
+.status-item span {
+  color: #666;
+  font-size: 14px;
+}
+
+.kyc-document {
+  height: 283px;
+  padding: 10px 10px;
+}
+
+.kyc-images {
+  display: flex;
+  gap: 19px;
+}
+
+.kyc-images img {
+  width: 302px;
+  height: 170px;
+  object-fit:contain;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.gallery-section {
+  height: 556px;
+}
+
+.gallery-grid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gallery-grid img,
+.gallery-grid video {
+  width: 150px;
+  height: 200px;
+  border-radius: 5px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+
+.user-activity {
+  height: 543px;
+}
+
+.user-activity ul {
+  padding-left: 20px;
+}
+
+.user-activity li {
+  margin-bottom: 8px;
+}
+

@@ -15,7 +15,7 @@ import {
   CPagination,
   CPaginationItem,
 } from '@coreui/react';
-import { FaUsers, FaFemale, FaMale, FaTransgender } from 'react-icons/fa';
+// import { FaUsers, FaFemale, FaMale, FaTransgender } from 'react-icons/fa';
 import './User.css';
 import { Card } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -23,6 +23,12 @@ import ProfilePage from './ProfilePage';
 import Gift from './Gift';
 import Header from './Header';
 import History from './History';
+import { FaUsers } from "react-icons/fa";
+import { BiFemale } from "react-icons/bi";
+import { FaMale } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+import { FaUserShield } from "react-icons/fa6";
+
 
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
@@ -72,14 +78,14 @@ const UserManagement = () => {
   const totalPages = Math.ceil(filteredUsers.length / rowsPerPage);
 
   const summaryData = [
-    { image:<img src='/assets/icons/Frame260.png'/>, title: 'Total Users', count: users.length },
-    { image:<img src='/assets/icons/Frame 260 (1).png'/>, title: 'Female', count: users.filter(u => u.gender === 'Female').length },
-    { image:<img src='../src/assets/icons/Frame 260 (8).png'/>, title: 'Male', count: users.filter(u => u.gender === 'Male').length },
-    { image:<img src='../src/assets/icons/Frame 260 (3).png'/>, title: 'Other', count: users.filter(u => u.gender === 'Other').length },
-    { image:<img src='../src/assets/icons/Frame 260 (4).png'/>, title: 'Silver', count: users.length },
-    { image:<img src='../src/assets/icons/Frame 260 (5).png'/>, title: 'Golden', count: users.filter(u => u.gender === 'Female').length },
-    { image:<img src='../src/assets/icons/Frame 260 (6).png'/>, title: 'Premium', count: users.filter(u => u.gender === 'Male').length },
-    { image:<img src='../src/assets/icons/Frame 260 (7).png'/>, title: 'VIP', count: users.filter(u => u.gender === 'Other').length },
+    { icon:<FaUsers size={25} color='white'/>, title: 'Total Users', count: users.length },
+    { icon:<BiFemale  size={30} color='white'/>, title: 'Female', count: users.filter(u => u.gender === 'Female').length },
+    { icon:<FaMale  size={30} color='white'/>, title: 'Male', count: users.filter(u => u.gender === 'Male').length },
+    { icon:<FaUser  size={25} color='white'/>, title: 'Other', count: users.filter(u => u.gender === 'Other').length },
+    { icon:<FaUserShield  size={25} color='white'/>, title: 'Silver', count: users.length },
+    { icon:<FaUserShield  size={25} color='white'/>, title: 'Golden', count: users.filter(u => u.gender === 'Female').length },
+    { icon:<FaUserShield  size={25} color='white'/>, title: 'Premium', count: users.filter(u => u.gender === 'Male').length },
+    { icon:<FaUserShield  size={25} color='white'/>, title: 'VIP', count: users.filter(u => u.gender === 'Other').length },
   
   ];
 
@@ -118,7 +124,7 @@ const UserManagement = () => {
                     <div className="" style={{color:"#888585"}}>{item.title}</div>
                     <div>{item.count}</div>
                   </div>
-                <div className="user-summary-icon mb-1">{item.image}</div>
+                <div className="user-summary-icon mb-1">{item.icon}</div>
                 </div>
               </CCardBody>
             </CCard>

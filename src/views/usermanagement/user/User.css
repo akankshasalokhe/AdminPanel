@@ -22,8 +22,10 @@ body {
 
 .user-summary-icon {
   width: 46px;
-  margin: 0 ;
-  font-size: 20px;
+  /* font-size: 20px; */
+  background-color: rgba(0, 255, 119, 0.69);
+  padding: 4px;
+  border-radius: 50px;
 }
 
 .filters-container Input {

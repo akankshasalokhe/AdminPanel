@@ -231,16 +231,15 @@ const UserManagement = () => {
                 <CTableDataCell>{user.gallery}</CTableDataCell>
                 <CTableDataCell>{user.createdAt}</CTableDataCell>
                 <button
-  className="btn btn-sm btn-warning me-1"
-  onClick={() => {
-    setSelectedUser(user);
-    setShowProfile(true);
-    setActivePage('Profile');
-  }}
->
-  View
-</button>
-
+                    className="btn btn-sm btn-warning me-1"
+                    onClick={() => {
+                      setSelectedUser(user);
+                      setShowProfile(true);
+                      setActivePage('Profile');
+                    }}
+                  >
+                    View
+                </button>
               </CTableRow>
             ))}
           </CTableBody>

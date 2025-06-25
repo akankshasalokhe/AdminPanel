@@ -81,6 +81,16 @@ body {
   font-weight: 500;
   color: white;
 }
+.category-badge {
+  display: inline-block;
+  width: 80px;
+  /* height: 19px; */
+  line-height: 19px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+}
 
 .status-badge.complete {
   background-color: #28a745; /* green */
@@ -92,6 +102,21 @@ body {
 
 .status-badge.failed {
   background-color: #dc3545; /* red */
+}
+
+.category-badge.high {
+  color: #1AA01E;
+  background-color: #4ac968; /* green */
+}
+
+.category-badge.medium {
+  color: #4157FB;
+  background-color: #337cf27d; /* yellow */
+}
+
+.category-badge.inactive {
+  color: #F00000;
+  background-color: #e1919b; /* red */
 }
 
 .view-btn {

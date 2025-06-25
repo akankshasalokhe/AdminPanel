@@ -26,7 +26,7 @@ const sampleData = [
 
 const ChatLogPage = () => {
   return (
-    <div style={{ width: '1017px', height: '522px', margin: 'auto' }}>
+    <div style={{ width: '', height: '522px', margin: 'auto' }}>
       <CCard style={{ borderRadius: '20px', border: '1px solid #ccc', height: '100%' }}>
         <CCardHeader style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Stack direction="row" spacing={1} alignItems="center">

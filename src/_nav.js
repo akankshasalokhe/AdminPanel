@@ -308,32 +308,32 @@ const _nav = [
     // ],
   },
   {
-    component: CNavGroup,
+    component: CNavItem,
     name: 'Event & Management',
-    to: '/charts',
+    to: '/eventManagement',
     icon: <CIcon icon={cilChartPie} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: 'Event RSVP Stats',
-        to: '/charts/eventStats',
-      },
-      {
-        component: CNavItem,
-        name: 'Participant List',
-        to: '/charts/eventStats',
-      },
-      {
-        component: CNavItem,
-        name: 'Feedback collection',
-        to: '/charts/eventStats',
-      },
-      {
-        component: CNavItem,
-        name: 'Event moderators panel',
-        to: '/charts/eventStats',
-      },
-    ]
+    // items: [
+    //   {
+    //     component: CNavItem,
+    //     name: 'Event RSVP Stats',
+    //     to: '/charts/eventStats',
+    //   },
+    //   {
+    //     component: CNavItem,
+    //     name: 'Participant List',
+    //     to: '/charts/eventStats',
+    //   },
+    //   {
+    //     component: CNavItem,
+    //     name: 'Feedback collection',
+    //     to: '/charts/eventStats',
+    //   },
+    //   {
+    //     component: CNavItem,
+    //     name: 'Event moderators panel',
+    //     to: '/charts/eventStats',
+    //   },
+    // ]
   },
   {
     component: CNavGroup,

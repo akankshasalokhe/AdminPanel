@@ -1,17 +1,19 @@
 import React from 'react'
 import { CTable, CTableHead, CTableRow, CTableHeaderCell, CTableBody, CTableDataCell, CBadge, CButton } from '@coreui/react'
+import { FaRegEdit } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
 
-const features = {
-  Silver: ['Basic Support', '100MB Storage'],
-  Golden: ['Priority Support', '1GB Storage'],
-  Premium: ['Premium Support', '10GB Storage'],
-  VIP: ['24/7 Support', 'Unlimited Storage']
-}
+// const features = {
+//   Silver: ['Basic Support', '100MB Storage'],
+//   Golden: ['Priority Support', '1GB Storage'],
+//   Premium: ['Premium Support', '10GB Storage'],
+//   VIP: ['24/7 Support', 'Unlimited Storage']
+// }
 
 const PackageTable = ({ packages }) => {
   return (
     <div className="package-table">
-      <CTable striped hover>
+      <CTable>
         <CTableHead>
           <CTableRow>
             <CTableHeaderCell>Package</CTableHeaderCell>
@@ -36,15 +38,11 @@ const PackageTable = ({ packages }) => {
                 </CBadge>
               </CTableDataCell>
               <CTableDataCell>
-                <div className="features-box">
-                  {features[pkg.name].map((f, i) => (
-                    <span key={i} className="feature-pill">{f}</span>
-                  ))}
-                </div>
+                View Feature
               </CTableDataCell>
               <CTableDataCell>
-                <CButton color="primary" size="sm">Edit</CButton>{' '}
-                <CButton color="danger" size="sm">Delete</CButton>
+                <CButton color="primary" size="sm"><FaRegEdit /></CButton>{' '}
+                <CButton color="danger" size="sm"><MdDeleteForever /></CButton>
               </CTableDataCell>
             </CTableRow>
           ))}

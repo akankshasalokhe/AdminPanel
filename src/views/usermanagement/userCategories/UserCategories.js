@@ -16,7 +16,7 @@ const UserCategories = () => {
   const itemsPerPage = 10;
   const [totalPages, setTotalPages] = useState(1);
 
-  const API_BASE = 'http://localhost:2000/api/userCategories';
+  const API_BASE = 'https://admin-panel-wypp.vercel.app/api/userCategories';
 
   useEffect(() => {
     fetchCategories();

@@ -29,7 +29,7 @@ body {
 .stat-icon-box {
   width: 44px;
   height: 37px;
-  /* border: 1px solid #aaa; */
+  border: 1px solid #c24ff0b1;
   display: flex;
   align-items: center;
   justify-content: center;

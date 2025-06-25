@@ -3,25 +3,28 @@ import { CCard, CCardBody, CRow, CCol, CTable, CTableBody, CTableHead, CTableRow
 import './Gift.css';
 import { Container } from '@mui/material';
 import CIcon from '@coreui/icons-react';
+import { FaGift } from "react-icons/fa6";
+import { FaRegHeart } from "react-icons/fa";
+
 
 const stats = [
   {
     title: "Total Gift Sent",
     count: 120,
     coin: 500,
-    image: <img src="../src/assets/icons/Group 93.png" alt="sent" className="stat-img" />,
+    icon: <FaGift size={25} color='#4157FBE3'/>,
   },
   {
     title: "Total Gift Received",
     count: 95,
     coin: 420,
-    image: <img src="../src/assets/icons/Group 93.png" alt="received" className="stat-img" />,
+    icon:<FaGift size={25} color='#4157FBE3'/>,
   },
   {
     title: "Like Gift",
     count: 70,
     coin: 380,
-    image: <img src="../src/assets/icons/Group 163.png" alt="like" className="stat-img" />,
+    icon: <FaRegHeart size={25} color='#E440DC8A'/>,
   },
 ];
 const topGifts = [
@@ -76,7 +79,7 @@ const Gift = () => {
                 <div className="stat-count fw-bold fs-4">{item.count}</div>
                 <div className="stat-coin text-primary">{item.coin} coins</div>
               </div>
-              <div className="stat-icon-box">{item.image}</div>
+              <div className="stat-icon-box">{item.icon}</div>
             </CCardBody>
           </CCard>
         </CCol>

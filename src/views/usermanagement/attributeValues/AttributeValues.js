@@ -93,7 +93,7 @@ function AttributeValues() {
 
  const handleUpdate = async () => {
   try {
-    await axios.put(`http://localhost:2000/api/userSubCategory/updateSubCategory/${editData.id}`, {
+    await axios.put(`https://datingapp-p2d5.onrender.com/api/userSubCategory/updateSubCategory/${editData.id}`, {
       name: editData.name,
       category: editData.category,
     });

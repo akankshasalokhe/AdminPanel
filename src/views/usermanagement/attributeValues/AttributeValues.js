@@ -22,8 +22,8 @@ function AttributeValues() {
 
   const fetchAll = async () => {
     try {
-      const catRes = await axios.get("http://localhost:2000/api/userCategories/getAllCategories");
-      const subCatRes = await axios.get("http://localhost:2000/api/userSubCategory/getAllSubCategories");
+      const catRes = await axios.get("https://datingapp-p2d5.onrender.com/api/userCategories/getAllCategories");
+      const subCatRes = await axios.get("https://datingapp-p2d5.onrender.com/api/userSubCategory/getAllSubCategories");
       setCategories(catRes.data);
       setSubCategories(subCatRes.data);
     } catch (error) {
@@ -56,7 +56,7 @@ function AttributeValues() {
 
       for (const val of attributeValues) {
         if (val.trim() !== '') {
-          await axios.post("http://localhost:2000/api/userSubCategory/CreateSubCategory", {
+          await axios.post("https://datingapp-p2d5.onrender.com/api/userSubCategory/CreateSubCategory", {
             name: val,
             category: selectedCategory,
           });
@@ -74,7 +74,7 @@ function AttributeValues() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:2000/api/userSubCategory/deleteSubCategory/${id}`);
+      await axios.delete(`https://datingapp-p2d5.onrender.com/api/userSubCategory/deleteSubCategory/${id}`);
       fetchAll();
     } catch (error) {
       console.error('Delete error:', error);

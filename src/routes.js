@@ -27,6 +27,7 @@ const ChatInterection = React.lazy(() => import('./views/ChatAndIntereaction/cha
 // const LogsPage = React.lazy(()=>import('./views/ChatAndIntereaction/LogsPage'))
 const ChatLogPage = React.lazy(()=>import('./views/ChatAndIntereaction/ChatLogPage'))
 
+const Crossing = React.lazy(()=>import('./views/Crossing/Crossing'))
 // Icons
 const CoreUIIcons = React.lazy(() => import('./views/icons/coreui-icons/CoreUIIcons'))
 const Flags = React.lazy(() => import('./views/icons/flags/Flags'))
@@ -69,6 +70,9 @@ const routes = [
   // { path:'/chatInteraction/logsPage',name:"Logs Page",element:LogsPage},
   { path:'/chatInteraction/chatLogPage',name:'ChatLog Page',element:ChatLogPage},
 
+
+  //crossing
+  { path:'/crossing',name:'Crossing',element:Crossing},
   // Icons
   { path: '/icons', exact: true, name: 'Icons', element: CoreUIIcons },
   { path: '/icons/coreui-icons', name: 'CoreUI Icons', element: CoreUIIcons },

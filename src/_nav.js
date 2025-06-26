@@ -446,27 +446,27 @@ const _nav = [
     ],
   },
   {
-    component: CNavGroup,
+    component: CNavItem,
     name: 'Crossing',
-    to: '/widgets',
+    to: '/crossing',
     icon: <CIcon icon={cilCalculator} customClassName="nav-icon" />,
-    item:[
-      {
-        component: CNavItem,
-        name: 'Recent Crossing',
-        to: '/notifications/alerts',
-      },
-       {
-        component: CNavItem,
-        name: 'Repeat Crossing',
-        to: '/notifications/alerts',
-      },
-       {
-        component: CNavItem,
-        name: 'First Crossing',
-        to: '/notifications/alerts',
-      },
-    ]
+    // item:[
+    //   {
+    //     component: CNavItem,
+    //     name: 'Recent Crossing',
+    //     to: '/notifications/alerts',
+    //   },
+    //    {
+    //     component: CNavItem,
+    //     name: 'Repeat Crossing',
+    //     to: '/notifications/alerts',
+    //   },
+    //    {
+    //     component: CNavItem,
+    //     name: 'First Crossing',
+    //     to: '/notifications/alerts',
+    //   },
+    // ]
     
   },
   

@@ -4,7 +4,7 @@ import { Button, Modal, Form, Table, Row, Col, InputGroup, FormControl } from 'r
 import { IconButton } from '@mui/material';
 import { Edit, Delete } from '@mui/icons-material';
 
-const ITEMS_PER_PAGE = 7;
+const ITEMS_PER_PAGE = 10;
 
 function AttributeValues() {
   const [categories, setCategories] = useState([]);
@@ -165,7 +165,7 @@ function AttributeValues() {
       <Table bordered hover>
         <thead>
           <tr>
-            <th>#</th>
+            {/* <th></th> */}
             <th>Attribute</th>
             <th>Attribute Value</th>
             <th>Action</th>
@@ -175,7 +175,7 @@ function AttributeValues() {
           {Object.entries(groupedData()).map(([category, items], catIndex) =>
             items.map((sub, index) => (
               <tr key={sub._id}>
-                <td>{(currentPage - 1) * ITEMS_PER_PAGE + catIndex + index + 1}</td>
+                {/* <td>{(currentPage - 1) * ITEMS_PER_PAGE + catIndex + index + 1}</td> */}
                 <td>{category}</td>
                 <td>{sub.name}</td>
                 <td>

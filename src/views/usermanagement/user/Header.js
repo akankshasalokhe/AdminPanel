@@ -1,9 +1,8 @@
-import { Container } from '@mui/material';
 import React from 'react';
 import './Header.css';
 
 function Header({ activePage, setActivePage }) {
-  const navItems = ['Profile','History', 'Gift', 'Package', 'Coin', 'User Activity', 'Support'];
+  const navItems = ['Profile', 'History', 'Gift', 'Package', 'Coin', 'User Activity', 'Support'];
 
   const handleClick = (item) => {
     setActivePage(item);
@@ -11,7 +10,7 @@ function Header({ activePage, setActivePage }) {
   };
 
   return (
-    <Container className="head mb-4">
+    <div className="head">
       <div className="navbar-container">
         {navItems.map((item, index) => (
           <div
@@ -23,7 +22,7 @@ function Header({ activePage, setActivePage }) {
           </div>
         ))}
       </div>
-    </Container>
+    </div>
   );
 }
 

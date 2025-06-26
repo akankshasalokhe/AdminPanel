@@ -15,23 +15,38 @@ const UserCategories = () => {
   const [page, setPage] = useState(1);
   const itemsPerPage = 10;
   const [totalPages, setTotalPages] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
+
 
   const API_BASE = 'https://datingapp-p2d5.onrender.com/api/userCategories';
 
   useEffect(() => {
+  const delayDebounce = setTimeout(() => {
     fetchCategories();
-  }, [page]);
+  }, 500); // 500ms delay for debounce
+
+  return () => clearTimeout(delayDebounce); // cleanup
+}, [page, searchQuery]);
+
+
 
   const fetchCategories = async () => {
-    try {
-      const { data } = await axios.get(`${API_BASE}/getUserCategory?page=${page}&limit=${itemsPerPage}`);
-      setCategories(data.categories);
-      setTotalPages(Math.ceil(data.total / itemsPerPage));
-    } catch (err) {
-      console.error(err);
-      alert('Error fetching categories.');
-    }
-  };
+  try {
+    const { data } = await axios.get(`${API_BASE}/getUserCategory`, {
+      params: {
+        page,
+        limit: itemsPerPage,
+        search: searchQuery
+      }
+    });
+    setCategories(data.categories);
+    setTotalPages(Math.ceil(data.total / itemsPerPage));
+  } catch (err) {
+    console.error(err);
+    alert('Error fetching categories.');
+  }
+};
+
 
   const handleAddCategory = async () => {
     try {
@@ -77,9 +92,24 @@ const UserCategories = () => {
   return (
     <CCard>
       <CCardHeader className="d-flex justify-content-between align-items-center">
-        <h5>User Attributes</h5>
-        <CButton color="primary" onClick={() => setModalVisible(true)}>Add Category</CButton>
-      </CCardHeader>
+  <h5 className="mb-0">User Attributes</h5>
+  <div className="">
+    <CFormInput
+  type="text"
+  placeholder="Search category"
+  value={searchQuery}
+  onChange={e => {
+    setSearchQuery(e.target.value);
+    setPage(1);
+  }}
+  style={{ minWidth: '400px', height: '40px', marginBottom:'10px' }}
+/>
+
+    {/* <CButton color="secondary" onClick={() => fetchCategories()}></CButton> */}
+    <CButton color="primary" onClick={() => setModalVisible(true)} style={{marginLeft:"300px"}}>Add Category</CButton>
+  </div>
+</CCardHeader>
+
 
       <CCardBody>
         <TableContainer>

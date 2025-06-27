@@ -1,22 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { CCard, CCardBody, CCardHeader, CCol, CRow, CFormInput, CFormSelect, CTable, CTableHead, CTableRow, CTableHeaderCell, CTableBody, CTableDataCell, CAvatar, CButton } from '@coreui/react'
-import { IoWallet } from "react-icons/io5";
-import { FaRegHeart } from "react-icons/fa";
-import { FaMoneyBillWave } from "react-icons/fa";
-
+import {
+  CCard, CCardBody, CCardHeader, CCol, CRow, CFormInput, CFormSelect,
+  CTable, CTableHead, CTableRow, CTableHeaderCell, CTableBody, CTableDataCell,
+  CButton
+} from '@coreui/react'
+import { IoWallet } from 'react-icons/io5'
+import { FaRegHeart, FaMoneyBillWave } from 'react-icons/fa'
+import './EventInfo.css'
 
 const EventInfoPage = () => {
   const { eventId } = useParams()
   const navigate = useNavigate()
 
-  const [eventData, setEventData] = useState({
+  const [eventData] = useState({
     name: 'Valentine Gala',
     location: 'Mumbai, India',
     attendance: [
       {
         id: 1,
-        attendee: { name: 'Priya Singh', age: 26, image:"https://cdn.pixabay.com/photo/2023/04/21/15/42/portrait-7942151_1280.jpg" },
+        attendee: { name: 'Priya Singh', age: 26, image: "https://cdn.pixabay.com/photo/2023/04/21/15/42/portrait-7942151_1280.jpg" },
         partner: { name: 'Amit Joshi', email: 'amit@example.com' },
         contact: { phone: '+91-9876543210', email: 'priya@gmail.com' },
         status: 'Paid',
@@ -25,7 +28,7 @@ const EventInfoPage = () => {
       },
       {
         id: 2,
-        attendee: { name: 'Neha Verma', age: 24, image:"https://cdn.pixabay.com/photo/2023/04/21/15/42/portrait-7942151_1280.jpg"},
+        attendee: { name: 'Neha Verma', age: 24, image: "https://cdn.pixabay.com/photo/2023/04/21/15/42/portrait-7942151_1280.jpg" },
         partner: { name: 'Rahul Jain', email: 'rahul@example.com' },
         contact: { phone: '+91-9123456780', email: 'neha@gmail.com' },
         status: 'Interested',
@@ -52,67 +55,66 @@ const EventInfoPage = () => {
   })
 
   return (
-    <div className="">
-      <CButton color="light" className="mb-1" onClick={() => navigate(-1)}>
+    <div className="event-info-container">
+      <CButton color="light" className="mb-3" onClick={() => navigate(-1)}>
         ← Back
       </CButton>
 
-      <h3>{eventData.name}</h3>
+      <h3 className="mb-0">{eventData.name}</h3>
       <p className="text-muted">{eventData.location}</p>
 
-      {/* Top 3 Summary Cards */}
-      <CRow className="mb-4">
-        <CCol xs={12} md={4}>
-          <CCard style={{ border: '1px solid #ccc', width: '337.36px', height: '128px' }}>
+      <CRow className="g-3 mb-4">
+        <CCol xs={12} sm={6} lg={4}>
+          <CCard className="summary-card">
             <CCardBody className="d-flex justify-content-between align-items-center">
               <div>
-                <h6 style={{color:"#00001A9C"}}>Total Interested</h6>
+                <h6 className="text-label">Total Interested</h6>
                 <h3>{eventData.stats.totalInterested}</h3>
               </div>
-              <div style={{ backgroundColor:"#FFBE4D",padding:'5px',borderRadius:"5px"}}>
-                  <FaRegHeart size={40} color='white' />
+              <div className="icon-box heart">
+                <FaRegHeart size={30} color="white" />
               </div>
             </CCardBody>
           </CCard>
         </CCol>
-        <CCol xs={12} md={4}>
-          <CCard style={{ border: '1px solid #ccc', width: '337.36px', height: '128px' }}>
+
+        <CCol xs={12} sm={6} lg={4}>
+          <CCard className="summary-card">
             <CCardBody className="d-flex justify-content-between align-items-center">
               <div>
-                <h6 style={{color:"#00001A9C"}}>Total Paid</h6>
+                <h6 className="text-label">Total Paid</h6>
                 <h3>{eventData.stats.totalPaid}</h3>
               </div>
-              <div style={{ backgroundColor:"#1AA01E",padding:'5px',borderRadius:"5px"}}>
-                  <IoWallet size={40} color='white' />
+              <div className="icon-box wallet">
+                <IoWallet size={30} color="white" />
               </div>
             </CCardBody>
           </CCard>
         </CCol>
-        <CCol xs={12} md={4}>
-          <CCard style={{ border: '1px solid #ccc', width: '337.36px', height: '128px' }}>
+
+        <CCol xs={12} sm={6} lg={4}>
+          <CCard className="summary-card">
             <CCardBody className="d-flex justify-content-between align-items-center">
               <div>
-                <h6 style={{color:"#00001A9C"}}>Total Revenue</h6>
+                <h6 className="text-label">Total Revenue</h6>
                 <h3>₹{eventData.stats.totalRevenue}</h3>
               </div>
-              <div style={{ backgroundColor:"#3CC3DF",padding:'5px',borderRadius:"5px"}}>
-                  <FaMoneyBillWave size={40} color='white' />
-              </div>            
-              </CCardBody>
+              <div className="icon-box revenue">
+                <FaMoneyBillWave size={30} color="white" />
+              </div>
+            </CCardBody>
           </CCard>
         </CCol>
-        
       </CRow>
 
-      {/* Attendance Section */}
-      <CCard style={{ border: '1px solid #ccc', borderRadius: '10px', height: '713px' }}>
-        <CCardHeader className="d-flex justify-content-between align-items-center">
+      <CCard className="attendance-card">
+        <CCardHeader className="d-flex flex-column flex-md-row justify-content-between gap-2 align-items-start align-items-md-center">
           <h5>Event Attendance</h5>
-          <div className="d-flex gap-2">
+          <div className="d-flex flex-wrap gap-2">
             <CFormInput
               size="sm"
               type="text"
-              placeholder="Search..."
+              placeholder="Search by name..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -121,14 +123,15 @@ const EventInfoPage = () => {
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
             >
-              <option>All</option>
-              <option>Paid</option>
-              <option>Interested</option>
+              <option value="All">All</option>
+              <option value="Paid">Paid</option>
+              <option value="Interested">Interested</option>
             </CFormSelect>
           </div>
         </CCardHeader>
-        <CCardBody style={{ overflowY: 'auto' }}>
-          <CTable responsive>
+
+        <CCardBody style={{ overflowX: 'auto' }}>
+          <CTable responsive hover>
             <CTableHead>
               <CTableRow>
                 <CTableHeaderCell>Attendee Info</CTableHeaderCell>
@@ -144,7 +147,13 @@ const EventInfoPage = () => {
                 <CTableRow key={entry.id}>
                   <CTableDataCell>
                     <div className="d-flex align-items-center gap-2">
-                      <img src={entry.attendee.image} size="md" width={50} height={50} style={{borderRadius:"50%",objectFit:"cover"}}/>
+                      <img
+                        src={entry.attendee.image}
+                        alt={entry.attendee.name}
+                        width={50}
+                        height={50}
+                        className="rounded-circle object-fit-cover"
+                      />
                       <div>
                         <div>{entry.attendee.name}</div>
                         <small>Age: {entry.attendee.age}</small>
@@ -160,14 +169,9 @@ const EventInfoPage = () => {
                     <small>{entry.contact.email}</small>
                   </CTableDataCell>
                   <CTableDataCell>
-                    <CButton
-                      color="success"
-                      size="sm"
-                      className="px-3"
-                      style={{ borderRadius: '10px', backgroundColor: '#00990517', color: '#000' }}
-                    >
+                    <span className={`status-badge ${entry.status.toLowerCase()}`}>
                       {entry.status}
-                    </CButton>
+                    </span>
                   </CTableDataCell>
                   <CTableDataCell>{entry.registration}</CTableDataCell>
                   <CTableDataCell>

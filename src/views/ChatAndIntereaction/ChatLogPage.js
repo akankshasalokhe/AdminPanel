@@ -1,4 +1,3 @@
-// ChatLog.js
 import React from 'react';
 import {
   CCard,
@@ -26,21 +25,32 @@ const sampleData = [
 
 const ChatLogPage = () => {
   return (
-    <div style={{ width: '', height: '522px', margin: 'auto' }}>
-      <CCard style={{ borderRadius: '20px', border: '1px solid #ccc', height: '100%' }}>
-        <CCardHeader style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <div style={{ width: '100%', height: '522px' }}>
+      <CCard style={{
+        borderRadius: '20px',
+        border: '1px solid #e0e0e0',
+        height: '100%',
+        boxShadow: '0 3px 10px rgba(0, 0, 0, 0.06)'
+      }}>
+        <CCardHeader style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          paddingBottom: 8
+        }}>
           <Stack direction="row" spacing={1} alignItems="center">
             <ChatBubbleOutlineIcon color="primary" />
-            <Typography variant="h6">Chat Log</Typography>
+            <Typography variant="h6" fontWeight={600}>Chat Log</Typography>
           </Stack>
-          <TextField size="small" placeholder="Search..." />
+          <TextField size="small" placeholder="Search..." sx={{ width: 240 }} />
         </CCardHeader>
+
         <CCardBody style={{ overflowY: 'auto', paddingTop: 0 }}>
-          <Table>
-            <TableHead>
+          <Table size="small">
+            <TableHead sx={{ backgroundColor: '#f8f8f8' }}>
               <TableRow>
                 <TableCell><strong>Users</strong></TableCell>
-                <TableCell><strong>Messages Count</strong></TableCell>
+                <TableCell><strong>Messages</strong></TableCell>
                 <TableCell><strong>Date/Time</strong></TableCell>
                 <TableCell><strong>Status</strong></TableCell>
                 <TableCell><strong>Action</strong></TableCell>
@@ -48,13 +58,27 @@ const ChatLogPage = () => {
             </TableHead>
             <TableBody>
               {sampleData.map((row) => (
-                <TableRow key={row.id}>
+                <TableRow key={row.id} hover>
                   <TableCell>{row.user}</TableCell>
                   <TableCell>{row.messages}</TableCell>
                   <TableCell>{row.datetime}</TableCell>
-                  <TableCell>{row.status}</TableCell>
                   <TableCell>
-                    <Button variant="outlined" size="small">View Details</Button>
+                    <Typography
+                      variant="body2"
+                      color={row.status === 'Active' ? 'green' : 'gray'}
+                      fontWeight={500}
+                    >
+                      {row.status}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Button variant="outlined" size="small" sx={{
+                      borderRadius: 2,
+                      textTransform: 'none',
+                      px: 2
+                    }}>
+                      View Details
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))}

@@ -8,7 +8,7 @@ const packages = [
     id: 1,
     name: 'Silver',
     type: 'silver',
-    icon: <FaMedal />,
+    icon: <FaMedal color='#00001A98'/>,
     status: 'Active',
     price: '₹ 100',
     duration: '1 Month',
@@ -19,7 +19,7 @@ const packages = [
     id: 2,
     name: 'Golden',
     type: 'golden',
-    icon: <FaStar />,
+    icon: <FaStar color='#998F06'/>,
     status: 'Active',
     price: '₹ 250',
     duration: '1 Month',
@@ -30,7 +30,7 @@ const packages = [
     id: 3,
     name: 'Premium',
     type: 'premium',
-    icon: <FaGem />,
+    icon: <FaGem color=''/>,
     status: 'Active',
     price: '₹ 500',
     duration: '1 Month',
@@ -41,7 +41,7 @@ const packages = [
     id: 4,
     name: 'VIP',
     type: 'vip',
-    icon: <FaCrown />,
+    icon: <FaCrown color='#F00000BA'/>,
     status: 'Active',
     price: '₹ 1000',
     duration: '1 Month',
@@ -68,7 +68,7 @@ const PackageManagement = () => {
             {/* Top Section */}
             <div className="package-top">
               <div className="package-name">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px',fontSize:'20px' }}>
                   {pkg.icon}
                   {pkg.name}
                 </div>
@@ -126,7 +126,7 @@ const PackageManagement = () => {
                   <CBadge color="success" style={{ borderRadius: '30px' }}>{pkg.status}</CBadge>
                 </CTableDataCell>
                 <CTableDataCell>
-                  <CButton color="info" size="sm" onClick={() => openFeatureModal(pkg)}>View Features</CButton>
+                  <CButton color="light" size="sm" onClick={() => openFeatureModal(pkg)}>View Features</CButton>
                 </CTableDataCell>
                 <CTableDataCell>
                   <CButton color="primary" size="sm" className="me-2">Edit</CButton>

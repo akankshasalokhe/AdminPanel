@@ -1,107 +1,232 @@
-/* Make images responsive */
+:root {
+  --bg-color: #f8f9fa;
+  --card-bg: #ffffff;
+  --text-primary: #212529;
+  --text-secondary: #555;
+  --text-muted: #888;
+  --text-default: #333;
+  --border-color: #e0e0e0;
+  --highlight: #3498db;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.1);
+  --accent-bg: #eef7ff;
+}
+
+/* Container */
+body, .c-container {
+  background-color: var(--bg-color);
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--text-default);
+}
+
+/* Profile Image */
 .img-div {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin: 24px 0;
 }
-
 .img-div img {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+  border: 2px solid var(--highlight);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.img-div img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(52, 152, 219, 0.4);
 }
 
-/* Remove fixed pixel widths and use max-width */
+/* Info Card Styles */
 .info-card {
-  width: 100%;
-  max-width: 350px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-}
-
-/* Card content heights should adapt, remove fixed heights */
-.personal-card,
-.preference-card,
-.account-info,
-.account-status,
-.kyc-document,
-.gallery-section,
-.user-activity {
-  height: auto !important;
-}
-
-/* Right section profile card styling */
-.profile-card {
-  width: 100%;
-  border: 1px solid #ccc;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 10px;
-  padding: 10px;
-  background-color: #fff;
-  margin-bottom: 20px;
+  padding: 15px;
+  box-shadow: var(--shadow-sm);
+  color: var(--text-default);
+  background-color: var(--accent-bg);
 }
 
-/* Label-value pairs */
-.info-item,
-.status-item {
+.info-card h5 {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 8px;
+  color: var(--text-secondary);
+}
+
+/* Right section main cards */
+.profile-card {
+  background: var(--card-bg);
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--shadow-md);
+  color: var(--text-default);
+}
+
+.profile-card h5 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #2e2e2e;
+  border-bottom: 1px solid #f1f1f1;
+  padding-bottom: 10px;
+}
+
+/* Info Items */
+.info-item, .status-item {
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
+  color: var(--text-default);
 }
 
-.info-item label,
-.status-item label {
+.info-item label, .status-item label {
+  font-size: 15px;
+  color: var(--text-secondary);
   font-weight: 600;
-  color: #333;
   margin-bottom: 4px;
-  font-size: 14px;
 }
 
-.info-item span,
-.status-item span {
-  color: #666;
+.info-item span, .status-item span {
   font-size: 14px;
+  color: #777;
 }
 
-/* KYC section */
+/* KYC Section */
 .kyc-images {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
 }
 
 .kyc-images img {
-  width: 100%;
   max-width: 280px;
-  height: 100px;
+  width: 100%;
+  height: 120px;
   object-fit: contain;
-  border-radius: 5px;
+  border-radius: 6px;
   border: 1px solid #ddd;
+  background-color: #fafafa;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, object-fit 0.3s;
+  cursor: pointer;
 }
 
-/* Gallery section */
+.kyc-images img:hover {
+  transform: scale(1.2);
+  object-fit: cover;
+  box-shadow: 0 0 14px rgba(52, 152, 219, 0.3);
+  z-index: 10;
+}
+
+/* Gallery Section */
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
 .gallery-grid img,
 .gallery-grid video {
-  width: 100%;
+  width: 100px;
   height: 200px;
-  border-radius: 5px;
+  border-radius: 6px;
   object-fit: cover;
   border: 1px solid #ccc;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
-/* User activity list */
+.gallery-grid img:hover,
+.gallery-grid video:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Fullscreen Modal for Image/Video */
+.fullscreen-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.fullscreen-modal img,
+.fullscreen-modal video {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.fullscreen-modal .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 28px;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* User Activity List */
 .user-activity ul {
-  padding-left: 20px;
+  padding-left: 18px;
 }
 
 .user-activity li {
-  margin-bottom: 8px;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: var(--text-default);
+}
+
+/* Headings in left section */
+.text-center p:first-of-type {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 2px;
+  color: var(--text-default);
+}
+
+.text-center p:last-of-type {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .img-div {
+    margin-top: 10px;
+  }
+
+  .img-div img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .info-card {
+    max-width: 100%;
+  }
+
+  .gallery-grid img,
+  .gallery-grid video {
+    width: 100%;
+    height: 160px;
+  }
 }

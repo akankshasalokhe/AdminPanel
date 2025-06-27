@@ -20,6 +20,18 @@
 .package-card:hover {
   transform: translateY(-4px);
 }
+.silver .package-name{
+  color: #00001A96;
+}
+.golden .package-name{
+  color: #D0C304;
+}
+.premium .package-name{
+  color: #8979FF;
+}
+.vip .package-name{
+  color: #F00000E3;
+}
 
 /* Section 1 - Top */
 .package-top {
@@ -41,7 +53,7 @@
 }
 
 .status-pill {
-  background-color: rgba(26, 160, 30, 0.556);
+  background-color: rgba(26, 160, 30, 0.507);
   color: #e9ede9;
   padding: 2px 10px;
   border-radius: 20px;
@@ -54,11 +66,13 @@
   font-size: 20px;
   font-weight: bold;
   margin-top: 10px;
+  color: black;
 }
 
 .duration {
   font-size: 14px;
   opacity: 0.9;
+  color: #2f3640b3;
 }
 
 /* Section 2 - Bottom */
@@ -111,39 +125,39 @@
 
 /* Type-based colors */
 .silver {
-  background-color: #dfe6e9;
-  border-color: #b2bec3;
+  background-color: rgba(255, 255, 255, 0.838);
+  border-color: #0000000F;
 }
 
 .silver .package-top {
-  background-color: #b2bec3cc;
+  background-color: #00001A05;
 }
 
 .golden {
-  background-color: #fff8dc;
-  border-color: #f1c40ff7;
+  background-color: rgba(255, 255, 255, 0.838);
+  border-color: #998F06A8;
 }
 
 .golden .package-top {
-  background-color: #f1c40faa;
+  background-color: #998F0621;
 }
 
 .premium {
-  background-color: #f8f0fc;
-  border-color: #8e44ad;
+  background-color: rgba(255, 255, 255, 0.838);
+  border-color: #8979FF66;
 }
 
 .premium .package-top {
-  background-color: #8d44ada6;
+  background-color: #8979FF26;
 }
 
 .vip {
-  background-color: #ffe6e6;
-  border-color: #e74c3c;
+  background-color: rgba(255, 255, 255, 0.838);
+  border-color: #F0000021;
 }
 
 .vip .package-top {
-  background-color: #e74d3cc0;
+  background-color: #F0000012;
 }
 
 /* Responsive */

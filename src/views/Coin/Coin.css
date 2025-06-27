@@ -182,3 +182,15 @@ body {
     font-size: 20px;
   }
 }
+@media (min-width: 1200px) {
+  .d-flex.justify-content-between {
+    flex-wrap: nowrap; /* Prevent wrapping */
+    justify-content: space-between; /* Distribute cards evenly */
+  }
+
+  .summary-card {
+    flex: 1; /* All cards take equal space */
+    width: auto; /* Let flex handle sizing */
+    max-width: 100%;
+  }
+}

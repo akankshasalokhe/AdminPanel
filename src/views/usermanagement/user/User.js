@@ -119,10 +119,10 @@ const UserManagement = () => {
           <CCol key={index} xs="auto">
             <CCard className="mb-3 shadow-sm user-summary-card">
               <CCardBody className="text-center p-2">
-                <div className='d-flex justify-content-around align-items-center mt-3'>
+                <div className='d-flex justify-content-between align-items-center mt-2'>
                   <div>
-                    <div className="" style={{color:"#888585"}}>{item.title}</div>
-                    <div>{item.count}</div>
+                    <div className="" style={{color:"#888589",fontSize:"18px"}}>{item.title}</div>
+                    <div style={{fontSize:"20px",fontWeight:"700"}}>{item.count}</div>
                   </div>
                 <div className="user-summary-icon mb-1">{item.icon}</div>
                 </div>

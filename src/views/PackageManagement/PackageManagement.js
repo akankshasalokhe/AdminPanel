@@ -1,27 +1,157 @@
-import React from 'react'
-import PackageCard from './PackageCard'
-import PackageTable from './PackageTable'
-import './Package.css'
+import React, { useState } from 'react';
+import './Package.css';
+import { FaCrown, FaGem, FaMedal, FaStar } from 'react-icons/fa';
+import { CTable, CTableHead, CTableRow, CTableHeaderCell, CTableBody, CTableDataCell, CBadge, CButton, CModal, CModalHeader, CModalBody } from '@coreui/react'
 
 const packages = [
-  { name: 'Silver', price: '$10', duration: '1 Month', subscribers: 120, revenue: 1200 },
-  { name: 'Golden', price: '$25', duration: '3 Months', subscribers: 80, revenue: 2000 },
-  { name: 'Premium', price: '$40', duration: '6 Months', subscribers: 60, revenue: 2400 },
-  { name: 'VIP', price: '$70', duration: '12 Months', subscribers: 40, revenue: 2800 },
-]
+  {
+    id: 1,
+    name: 'Silver',
+    type: 'silver',
+    icon: <FaMedal />,
+    status: 'Active',
+    price: '₹ 100',
+    duration: '1 Month',
+    subscribers: 150,
+    revenue: '₹ 15,000',
+  },
+  {
+    id: 2,
+    name: 'Golden',
+    type: 'golden',
+    icon: <FaStar />,
+    status: 'Active',
+    price: '₹ 250',
+    duration: '1 Month',
+    subscribers: 100,
+    revenue: '₹ 25,000',
+  },
+  {
+    id: 3,
+    name: 'Premium',
+    type: 'premium',
+    icon: <FaGem />,
+    status: 'Active',
+    price: '₹ 500',
+    duration: '1 Month',
+    subscribers: 60,
+    revenue: '₹ 30,000',
+  },
+  {
+    id: 4,
+    name: 'VIP',
+    type: 'vip',
+    icon: <FaCrown />,
+    status: 'Active',
+    price: '₹ 1000',
+    duration: '1 Month',
+    subscribers: 40,
+    revenue: '₹ 40,000',
+  },
+];
 
 const PackageManagement = () => {
+   const [visible, setVisible] = useState(false)
+  const [selectedPackage, setSelectedPackage] = useState(null)
+
+  const openFeatureModal = (pkg) => {
+    setSelectedPackage(pkg)
+    setVisible(true)
+  }
+
   return (
     <div className="package-management">
       <h2 className="title">Package Management</h2>
       <div className="card-container">
-        {packages.map((pkg, idx) => (
-          <PackageCard key={idx} data={pkg} />
+        {packages.map((pkg) => (
+          <div className={`package-card ${pkg.type}`} key={pkg.id}>
+            {/* Top Section */}
+            <div className="package-top">
+              <div className="package-name">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  {pkg.icon}
+                  {pkg.name}
+                </div>
+                <span className="status-pill">{pkg.status}</span>
+              </div>
+              <div className="price">{pkg.price}</div>
+              <div className="duration">{pkg.duration}</div>
+            </div>
+
+            {/* Bottom Section */}
+            <div className="package-bottom">
+              <div className="metrics">
+                <span>
+                  <strong>Subscribers:</strong> {pkg.subscribers}
+                </span>
+                <span className="revenue">
+                  <strong>Revenue:</strong> {pkg.revenue}
+                </span>
+              </div>
+              <div className="card-buttons">
+                <button className="btn">Edit</button>
+                <button className="btn" style={{ backgroundColor: '#e74c3c' }}>Delete</button>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
-      <PackageTable packages={packages} />
-    </div>
-  )
-}
 
-export default PackageManagement
+       {/* Table */}
+      <div className="package-table">
+        <CTable hover responsive>
+          <CTableHead>
+            <CTableRow>
+              <CTableHeaderCell>Package</CTableHeaderCell>
+              <CTableHeaderCell>Price</CTableHeaderCell>
+              <CTableHeaderCell>Subscribers</CTableHeaderCell>
+              <CTableHeaderCell>Revenue</CTableHeaderCell>
+              <CTableHeaderCell>Status</CTableHeaderCell>
+              <CTableHeaderCell>Features</CTableHeaderCell>
+              <CTableHeaderCell>Action</CTableHeaderCell>
+            </CTableRow>
+          </CTableHead>
+          <CTableBody>
+            {packages.map((pkg) => (
+              <CTableRow key={pkg.id}>
+                <CTableDataCell>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    {pkg.icon} {pkg.name}
+                  </div>
+                </CTableDataCell>
+                <CTableDataCell>{pkg.price}</CTableDataCell>
+                <CTableDataCell>{pkg.subscribers}</CTableDataCell>
+                <CTableDataCell style={{ color: 'green' }}>{pkg.revenue}</CTableDataCell>
+                <CTableDataCell>
+                  <CBadge color="success" style={{ borderRadius: '30px' }}>{pkg.status}</CBadge>
+                </CTableDataCell>
+                <CTableDataCell>
+                  <CButton color="info" size="sm" onClick={() => openFeatureModal(pkg)}>View Features</CButton>
+                </CTableDataCell>
+                <CTableDataCell>
+                  <CButton color="primary" size="sm" className="me-2">Edit</CButton>
+                  <CButton color="danger" size="sm">Delete</CButton>
+                </CTableDataCell>
+              </CTableRow>
+            ))}
+          </CTableBody>
+        </CTable>
+      </div>
+
+      {/* Modal */}
+      <CModal visible={visible} onClose={() => setVisible(false)}>
+        <CModalHeader onClose={() => setVisible(false)}>
+          <strong>{selectedPackage?.name} Features</strong>
+        </CModalHeader>
+        <CModalBody>
+          {selectedPackage?.features.map((feat, idx) => (
+            <div key={idx} className="feature-pill">{feat}</div>
+          ))}
+        </CModalBody>
+      </CModal>
+    
+    </div>
+  );
+};
+
+export default PackageManagement;

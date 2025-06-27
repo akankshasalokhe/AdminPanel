@@ -11,54 +11,54 @@ body {
   font-weight: 600;
 }
 
+/* Summary Cards */
 .user-summary-card {
   width: 190px;
-  height: 91px;
+  height: 95px;
   border: 1px solid #000;
   border-radius: 5px;
-  margin-right: 35px;
+  margin-right: 40px;
   font-family: 'Crimson Text', serif;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
+/* Icon in summary card */
 .user-summary-icon {
   width: 46px;
-  /* font-size: 20px; */
   background-color: rgba(0, 255, 119, 0.69);
   padding: 4px;
   border-radius: 50px;
 }
 
-.filters-container Input {
+/* Filter input */
+.filters-container input {
   width: 235px;
-  height: 22px;
-  margin-left: 750px;
+  height: 32px;
+  margin-left: auto;
 }
 
+/* Filter selects */
 .filters-container select {
-  width: 351px;
-  height: 44px;
-  /* font-size: 14px; */
+  width: 235px;
+  height: 38px;
 }
 
+/* Table styles */
 .compact-table td,
-.compact-table th{
-  /* padding: 10px 0.5rem; */
+.compact-table th {
   font-size: 15px;
   vertical-align: middle;
 }
 
-/* Optional: reduce margin below table wrapper */
-/* .table-wrapper {
-  margin-bottom: 0.5rem !important;
-} */
-
-
 .user-table {
-  margin-left: 20px;  
-  width: 1496px;
-  height: 70px;
+  margin-left: 20px;
+  width: 100%;
+  min-width: 900px;
   text-align: center;
+  overflow-x: auto;
 }
+
 .custom-checkbox {
   width: 20.52px;
   height: 20px;
@@ -72,12 +72,12 @@ body {
   object-fit: cover;
 }
 
+/* Badge styles */
 .role-badge {
   background-color: #8979FF66;
   padding: 4px 10px;
   border-radius: 5px;
   display: inline-block;
-  /* font-weight: 500; */
 }
 
 .user-type-badge {
@@ -85,7 +85,6 @@ body {
   padding: 4px 10px;
   border-radius: 5px;
   display: inline-block;
-  /* font-weight: 500; */
 }
 
 .status-badge {
@@ -94,18 +93,61 @@ body {
   padding: 4px 10px;
   border-radius: 5px;
   display: inline-block;
-  /* font-weight: 500; */
 }
 
+/* Responsive Summary Card Row */
+@media (max-width: 1300px) {
+  .summary-cards-row {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-@media (max-width: 768px) {
   .user-summary-card {
     margin-right: 0 !important;
     margin-bottom: 1rem;
   }
+}
+
+/* Responsive Filters & Layout */
+@media (max-width: 992px) {
+  .filters-container {
+    flex-direction: column !important;
+    align-items: flex-start;
+    margin-left: 0 !important;
+    gap: 0.5rem;
+  }
+
+  .filters-container input,
+  .filters-container select {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  .user-table {
+    overflow-x: scroll;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-summary-card {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 1rem auto;
+  }
 
   .filters-container {
+    width: 100%;
     flex-direction: column;
-    gap: 0.5rem;
+    align-items: stretch;
+  }
+
+  .filters-container input,
+  .filters-container select {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .user-table {
+    font-size: 14px;
   }
 }

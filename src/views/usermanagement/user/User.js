@@ -134,54 +134,55 @@ const UserManagement = () => {
 
       <Card className=''>
 
-          <CRow className="d-flex mt-4 mb-4 ms-3 filters-container">
-            <CCol xs="" className='mb-2'>
-          <CFormInput
-            size="sm"
-            type="text"
-            placeholder="Search"
-            value={filters.search}
-            onChange={e => setFilters({ ...filters, search: e.target.value })}
-          />
-        </CCol>
-        <CCol xs="auto">
-          <CFormSelect
-            size="sm"
-            value={filters.gender}
-            onChange={e => setFilters({ ...filters, gender: e.target.value })}
-          >
-            <option value="">Real Users</option>
-            <option value="Male">Real Users</option>
-            <option value="Female">Block Users</option>
-            {/* <option value="Other">Other</option> */}
-          </CFormSelect>
-        </CCol>
-        <CCol xs="auto">
-          <CFormSelect
-            size="sm"
-            value={filters.role}
-            onChange={e => setFilters({ ...filters, role: e.target.value })}
-          >
-            <option value="">Role</option>
-            <option value="Admin">User</option>
-            <option value="User"></option>
-          </CFormSelect>
-        </CCol>
-        <CCol xs="auto">
-          <CFormSelect
-            size="sm"
-            value={filters.country}
-            onChange={e => setFilters({ ...filters, country: e.target.value })}
-          >
-            <option value="">Status</option>
-            <option value="USA">Online</option>
-            <option value="Canada">Offline</option>
-            <option value="UK">Block</option>
-            <option value="UK">Unblock</option>
-          </CFormSelect>
-        </CCol>
-        
-      </CRow>
+        <CRow className="d-flex mt-4 mb-4 ms-3 filters-container">
+  <CCol xs="auto" className='mb-2'>
+    <CFormInput
+      size="sm"
+      type="text"
+      placeholder="Search by name"
+      value={filters.search}
+      onChange={e => setFilters({ ...filters, search: e.target.value })}
+    />
+  </CCol>
+
+  <CCol xs="auto">
+    <CFormSelect
+      size="sm"
+      value={filters.gender}
+      onChange={e => setFilters({ ...filters, gender: e.target.value })}
+    >
+      <option value="">Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </CFormSelect>
+  </CCol>
+
+  <CCol xs="auto">
+    <CFormSelect
+      size="sm"
+      value={filters.role}
+      onChange={e => setFilters({ ...filters, role: e.target.value })}
+    >
+      <option value="">Role</option>
+      <option value="User">User</option>
+      <option value="Admin">Admin</option>
+    </CFormSelect>
+  </CCol>
+
+  <CCol xs="auto">
+    <CFormSelect
+      size="sm"
+      value={filters.country}
+      onChange={e => setFilters({ ...filters, country: e.target.value })}
+    >
+      <option value="">Country</option>
+      <option value="USA">USA</option>
+      <option value="Canada">Canada</option>
+      <option value="UK">UK</option>
+    </CFormSelect>
+  </CCol>
+</CRow>
 
       <div className="table-wrapper mb-3">
         <CTable responsive className="user-table compact-table">

@@ -20,7 +20,6 @@ const EventInfoPage = React.lazy(() => import('./views/EventManagement/EventInfo
 // Gifts
 const Gift = React.lazy(() => import('./views/Engagement/gifts/Gift'))
 const GiftCategory = React.lazy(() => import('./views/Engagement/giftCategory/GiftCategory'))
-const Dropdowns = React.lazy(() => import('./views/Engagement/dropdowns/Dropdowns'))
 
 // Chat
 const ChatInterection = React.lazy(() => import('./views/ChatAndIntereaction/chatInteraction'))
@@ -54,7 +53,6 @@ const routes = [
   { path: '/engagement', name: 'Engagement', element: Cards, exact: true },
   { path: '/engagement/gifts', name: 'Gift', element: Gift },
   { path: '/engagement/giftCategory', name: 'Gift Category', element: GiftCategory },
-  { path: '/buttons/dropdowns', name: 'Dropdowns', element: Dropdowns },
 
   // Wallet & Packages
   { path: '/wallet', name: 'Wallet', element: Wallet },

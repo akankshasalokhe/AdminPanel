@@ -1,6 +1,6 @@
 /* Summary Cards */
 .summary-card {
-  background-color: #f8f9fc;
+  background-color: #9689f891;
   border: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border-radius: 12px;
@@ -11,7 +11,7 @@
 }
 
 .summary-title {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   color: #6c757d;
 }

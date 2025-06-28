@@ -68,7 +68,7 @@ const Event = () => {
         {summaryCards.map((card, index) => (
           <CCol key={index} xs="12" sm="6" md="3">
             <CCard className="summary-card">
-              <CCardBody className="d-flex justify-content-between align-items-center">
+              <CCardBody className="d-flex justify-content-between ">
                 <div>
                   <div className="summary-title">{card.title}</div>
                   <div className="summary-count">{card.count}</div>

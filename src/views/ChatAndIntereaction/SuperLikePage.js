@@ -15,41 +15,29 @@ import {
   Stack,
   Typography,
   Avatar,
-  Chip,
 } from '@mui/material';
-import CallIcon from '@mui/icons-material/Call';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
-const callData = [
+const superLikeData = [
   {
     id: 1,
-    fromUser: { name: 'John Doe', avatar: 'https://i.pravatar.cc/40?img=1' },
-    toUser: 'Jane Smith',
-    type: 'Video',
-    duration: '15:30',
-    time: '2025-06-21 14:00',
-    status: 'Completed',
+    sender: { name: 'John Doe', userId: 'JD123', avatar: 'https://i.pravatar.cc/40?img=4' },
+    receiver: { name: 'Jane Smith', userId: 'JS456', avatar: 'https://i.pravatar.cc/40?img=5' },
+    message: 'Hey! I really like your profile 😊',
+    time: '2025-06-21 13:45',
+    status: 'Match',
   },
   {
     id: 2,
-    fromUser: { name: 'Alex Kim', avatar: 'https://i.pravatar.cc/40?img=2' },
-    toUser: 'Mike Lee',
-    type: 'Voice',
-    duration: '08:12',
-    time: '2025-06-21 11:45',
-    status: 'Missed',
-  },
-  {
-    id: 3,
-    fromUser: { name: 'Emily Clark', avatar: 'https://i.pravatar.cc/40?img=3' },
-    toUser: 'Sarah Park',
-    type: 'Video',
-    duration: '23:05',
-    time: '2025-06-20 18:20',
-    status: 'Completed',
+    sender: { name: 'Alex Kim', userId: 'AK789', avatar: 'https://i.pravatar.cc/40?img=6' },
+    receiver: { name: 'Emily Park', userId: 'EP101', avatar: 'https://i.pravatar.cc/40?img=7' },
+    message: 'Would love to connect with you!',
+    time: '2025-06-20 20:15',
+    status: 'Unmatch',
   },
 ];
 
-const CallLogPage = () => {
+const SuperLikePage = () => {
   return (
     <div style={{ width: '100%', height: '522px' }}>
       <CCard
@@ -69,9 +57,9 @@ const CallLogPage = () => {
           }}
         >
           <Stack direction="row" spacing={1} alignItems="center">
-            <CallIcon color="primary" />
+            <FavoriteBorderIcon color="primary" />
             <Typography variant="h6" fontWeight={600}>
-              Voice & Video Call
+              Super Like Send/Reciver
             </Typography>
           </Stack>
           <TextField size="small" placeholder="Search..." sx={{ width: 240 }} />
@@ -81,47 +69,63 @@ const CallLogPage = () => {
           <Table size="small">
             <TableHead sx={{ backgroundColor: '#f8f8f8' }}>
               <TableRow>
-                <TableCell><strong>Users</strong></TableCell>
-                <TableCell><strong>Type</strong></TableCell>
-                <TableCell><strong>Duration</strong></TableCell>
+                <TableCell><strong>Sender</strong></TableCell>
+                <TableCell><strong>Reciver</strong></TableCell>
+                <TableCell><strong>Message</strong></TableCell>
                 <TableCell><strong>Time</strong></TableCell>
                 <TableCell><strong>Status</strong></TableCell>
                 <TableCell><strong>Action</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {callData.map((call) => (
-                <TableRow key={call.id} hover>
+              {superLikeData.map((item) => (
+                <TableRow key={item.id} hover>
+                  {/* Sender */}
                   <TableCell>
                     <Stack direction="row" spacing={1} alignItems="center">
-                      <Avatar src={call.fromUser.avatar} alt={call.fromUser.name} />
+                      <Avatar src={item.sender.avatar} />
                       <div>
-                        <Typography fontWeight={600}>{call.fromUser.name}</Typography>
+                        <Typography fontWeight={600}>{item.sender.name}</Typography>
                         <Typography variant="caption" color="text.secondary">
-                          to {call.toUser}
+                          ID: {item.sender.userId}
                         </Typography>
                       </div>
                     </Stack>
                   </TableCell>
+
+                  {/* Receiver */}
                   <TableCell>
-                    <Chip
-                      label={call.type}
-                      color={call.type === 'Video' ? 'primary' : 'secondary'}
-                      size="small"
-                      sx={{ fontWeight: 500, textTransform: 'capitalize' }}
-                    />
+                    <Stack direction="row" spacing={1} alignItems="center">
+                      <Avatar src={item.receiver.avatar} />
+                      <div>
+                        <Typography fontWeight={600}>{item.receiver.name}</Typography>
+                        <Typography variant="caption" color="text.secondary">
+                          ID: {item.receiver.userId}
+                        </Typography>
+                      </div>
+                    </Stack>
                   </TableCell>
-                  <TableCell>{call.duration}</TableCell>
-                  <TableCell>{call.time}</TableCell>
+
+                  {/* Message */}
+                  <TableCell>
+                    <Typography variant="body2">{item.message}</Typography>
+                  </TableCell>
+
+                  {/* Time */}
+                  <TableCell>{item.time}</TableCell>
+
+                  {/* Status */}
                   <TableCell>
                     <Typography
                       variant="body2"
-                      color={call.status === 'Completed' ? 'green' : 'red'}
+                      color={item.status === 'Match' ? 'green' : 'red'}
                       fontWeight={500}
                     >
-                      {call.status}
+                      {item.status}
                     </Typography>
                   </TableCell>
+
+                  {/* Action */}
                   <TableCell>
                     <Button
                       variant="outlined"
@@ -145,4 +149,4 @@ const CallLogPage = () => {
   );
 };
 
-export default CallLogPage;
+export default SuperLikePage;

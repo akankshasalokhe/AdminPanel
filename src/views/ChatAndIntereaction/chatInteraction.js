@@ -9,6 +9,9 @@ import { MdWifiCalling3 } from "react-icons/md";
 // import { Button, Stack } from 'react-bootstrap';
 import ChatLogPage from './ChatLogPage';
 import CallLogPage from './CallLogPage';
+import SuperLikePage from './SuperLikePage';
+import ProfileViewLogPage from './ProfileViewLogPage';
+import MatchesLogPage from './MatchesLogPage';
 
 
 const cardData = [
@@ -39,27 +42,27 @@ const ChatInteraction = () => {
       case 'calls':
         return <CallLogPage />
       case 'superlikes':
-        return <p>This is the Super Likes page.</p>
+        return <SuperLikePage/>
       case 'views':
-        return <p>This is the Profile Views page.</p>
+        return <ProfileViewLogPage/>
       case 'matches':
-        return <p>This is the Matches page.</p>
+        return <MatchesLogPage/>
       default:
         return <p>Invalid tab.</p>
     }
   }
   return (
     <>
-    <Box p={3}>
+    <Box>
       <Typography variant="h4" gutterBottom>
         Chat & Interaction
       </Typography>
-      <Grid container spacing={2}>
+      <Grid container spacing={1}>
         {cardData.map((card, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
+          <Grid item xs={12} sm={6} md={4} lg={2} key={index}>
             <CCard style={{
-              width: 237,
-              height: 204,
+              width: 200,
+              height: 200,
               borderRadius: 20,
               border: '1px solid #ccc',
               boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
@@ -104,7 +107,7 @@ const ChatInteraction = () => {
     </Box>
 
     <div>
-      <Stack direction="row" spacing={2} sx={{ margin: '20px' }}>
+      <Stack direction="row"  sx={{ margin: '20px' }}>
         {tabList.map(({ label, value }) => (
           <Button
             key={value}
@@ -125,7 +128,7 @@ const ChatInteraction = () => {
         ))}
       </Stack>
 
-      <CCard className="m-4">
+      <CCard className="m-2">
         <CCardBody>
           {renderContent()}
         </CCardBody>

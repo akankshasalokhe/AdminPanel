@@ -15,41 +15,29 @@ import {
   Stack,
   Typography,
   Avatar,
-  Chip,
 } from '@mui/material';
-import CallIcon from '@mui/icons-material/Call';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
-const callData = [
+const profileViewData = [
   {
     id: 1,
-    fromUser: { name: 'John Doe', avatar: 'https://i.pravatar.cc/40?img=1' },
-    toUser: 'Jane Smith',
-    type: 'Video',
-    duration: '15:30',
-    time: '2025-06-21 14:00',
-    status: 'Completed',
+    viewer: { name: 'John Doe', userId: 'JD123', avatar: 'https://i.pravatar.cc/40?img=8' },
+    viewed: { name: 'Jane Smith', userId: 'JS456', avatar: 'https://i.pravatar.cc/40?img=9' },
+    viewCount: 3,
+    duration: '5m',
+    lastViewed: '2025-06-21 15:00',
   },
   {
     id: 2,
-    fromUser: { name: 'Alex Kim', avatar: 'https://i.pravatar.cc/40?img=2' },
-    toUser: 'Mike Lee',
-    type: 'Voice',
-    duration: '08:12',
-    time: '2025-06-21 11:45',
-    status: 'Missed',
-  },
-  {
-    id: 3,
-    fromUser: { name: 'Emily Clark', avatar: 'https://i.pravatar.cc/40?img=3' },
-    toUser: 'Sarah Park',
-    type: 'Video',
-    duration: '23:05',
-    time: '2025-06-20 18:20',
-    status: 'Completed',
+    viewer: { name: 'Alex Kim', userId: 'AK789', avatar: 'https://i.pravatar.cc/40?img=10' },
+    viewed: { name: 'Emily Park', userId: 'EP101', avatar: 'https://i.pravatar.cc/40?img=11' },
+    viewCount: 1,
+    duration: '30s',
+    lastViewed: '2025-06-20 18:20',
   },
 ];
 
-const CallLogPage = () => {
+const ProfileViewLogPage = () => {
   return (
     <div style={{ width: '100%', height: '522px' }}>
       <CCard
@@ -69,9 +57,9 @@ const CallLogPage = () => {
           }}
         >
           <Stack direction="row" spacing={1} alignItems="center">
-            <CallIcon color="primary" />
+            <VisibilityIcon color="primary" />
             <Typography variant="h6" fontWeight={600}>
-              Voice & Video Call
+              Profile View
             </Typography>
           </Stack>
           <TextField size="small" placeholder="Search..." sx={{ width: 240 }} />
@@ -81,47 +69,53 @@ const CallLogPage = () => {
           <Table size="small">
             <TableHead sx={{ backgroundColor: '#f8f8f8' }}>
               <TableRow>
-                <TableCell><strong>Users</strong></TableCell>
-                <TableCell><strong>Type</strong></TableCell>
+                <TableCell><strong>Viewer</strong></TableCell>
+                <TableCell><strong>Profile Viewed</strong></TableCell>
+                <TableCell><strong>View Count</strong></TableCell>
                 <TableCell><strong>Duration</strong></TableCell>
-                <TableCell><strong>Time</strong></TableCell>
-                <TableCell><strong>Status</strong></TableCell>
+                <TableCell><strong>Last Viewed</strong></TableCell>
                 <TableCell><strong>Action</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {callData.map((call) => (
-                <TableRow key={call.id} hover>
+              {profileViewData.map((item) => (
+                <TableRow key={item.id} hover>
+                  {/* Viewer */}
                   <TableCell>
                     <Stack direction="row" spacing={1} alignItems="center">
-                      <Avatar src={call.fromUser.avatar} alt={call.fromUser.name} />
+                      <Avatar src={item.viewer.avatar} />
                       <div>
-                        <Typography fontWeight={600}>{call.fromUser.name}</Typography>
+                        <Typography fontWeight={600}>{item.viewer.name}</Typography>
                         <Typography variant="caption" color="text.secondary">
-                          to {call.toUser}
+                          ID: {item.viewer.userId}
                         </Typography>
                       </div>
                     </Stack>
                   </TableCell>
+
+                  {/* Profile Viewed */}
                   <TableCell>
-                    <Chip
-                      label={call.type}
-                      color={call.type === 'Video' ? 'primary' : 'secondary'}
-                      size="small"
-                      sx={{ fontWeight: 500, textTransform: 'capitalize' }}
-                    />
+                    <Stack direction="row" spacing={1} alignItems="center">
+                      <Avatar src={item.viewed.avatar} />
+                      <div>
+                        <Typography fontWeight={600}>{item.viewed.name}</Typography>
+                        <Typography variant="caption" color="text.secondary">
+                          ID: {item.viewed.userId}
+                        </Typography>
+                      </div>
+                    </Stack>
                   </TableCell>
-                  <TableCell>{call.duration}</TableCell>
-                  <TableCell>{call.time}</TableCell>
-                  <TableCell>
-                    <Typography
-                      variant="body2"
-                      color={call.status === 'Completed' ? 'green' : 'red'}
-                      fontWeight={500}
-                    >
-                      {call.status}
-                    </Typography>
-                  </TableCell>
+
+                  {/* View Count */}
+                  <TableCell>{item.viewCount}</TableCell>
+
+                  {/* Duration */}
+                  <TableCell>{item.duration}</TableCell>
+
+                  {/* Last Viewed */}
+                  <TableCell>{item.lastViewed}</TableCell>
+
+                  {/* Action */}
                   <TableCell>
                     <Button
                       variant="outlined"
@@ -145,4 +139,4 @@ const CallLogPage = () => {
   );
 };
 
-export default CallLogPage;
+export default ProfileViewLogPage;

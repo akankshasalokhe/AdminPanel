@@ -62,7 +62,7 @@ const ChatInteraction = () => {
           <Grid item xs={12} sm={6} md={4} lg={2} key={index}>
             <CCard style={{
               width: 200,
-              height: 200,
+              height: 150,
               borderRadius: 20,
               border: '1px solid #ccc',
               boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
@@ -79,7 +79,7 @@ const ChatInteraction = () => {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      mt:2
+                      // mt:2
                     }}
                   >
                     {card.icon}

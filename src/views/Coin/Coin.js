@@ -1,14 +1,21 @@
 import React from 'react';
 import './Coin.css';
 // import { FaUser, FaCrown, FaStar, FaGem, FaCoins, FaUsers } from 'react-icons/fa';
+import { MdOutlineCurrencyRupee } from "react-icons/md";
+import { FaUserShield } from "react-icons/fa";
+import { RiVipDiamondLine } from "react-icons/ri";
+import { BiCoin } from "react-icons/bi";
+import { PiCoinVerticalLight } from "react-icons/pi";
+import { TbCoinRupeeFilled } from "react-icons/tb";
+
 
 const cardData = [
-  { title: 'Total Revenue', image:<img src="../src/assets/icons/Frame278.png" alt=''/>, total: '₹5,00,000', month: '+12%' },
-  { title: 'VIP User', image:<img src="../src/assets/icons/Frame278(1).png" alt=''/>, total: '120', month: '+10%' },
-  { title: 'Premium User', image:<img src="../src/assets/icons/Frame278(2).png" alt=''/>, total: '300', month: '+20.00%' },
-  { title: 'Golden User',image:<img src="../src/assets/icons/Frame278(3).png" alt=''/>, total: '80', month: '+5%' },
-  { title: 'Silver User', image:<img src="../src/assets/icons/Frame278(4).png" alt=''/>, total: '120', month: '-20.3%' },
-  { title: 'Other User', image:<img src="../src/assets/icons/Frame278(5).png" alt=''/>, total: '50', month: '+2.4%' },
+  { title: 'Total Revenue', icon:<MdOutlineCurrencyRupee/>, total: '₹5,00,000', month: '+12%' },
+  { title: 'VIP User', icon:<FaUserShield/>, total: '120', month: '+10%' },
+  { title: 'Premium User', icon:<RiVipDiamondLine/>, total: '300', month: '+20.00%' },
+  { title: 'Golden User',icon:<TbCoinRupeeFilled/>, total: '80', month: '+5%' },
+  { title: 'Silver User',icon:<PiCoinVerticalLight/>, total: '120', month: '-20.3%' },
+  { title: 'Other User', icon:<BiCoin/>, total: '50', month: '+2.4%' },
 ];
 
 const data = [
@@ -86,7 +93,7 @@ const Coin = () => {
             {cardData.map((card, index) => (
                 <div className="summary-card" key={index}>
                 <div className='d-flex flex-row'>
-                    <div className="card-icon">{card.image}</div>
+                    <div className="card-icon">{card.icon}</div>
                     <div className="card-loss">{card.month}</div>
                 </div>
                 <div className="card-title">{card.title}</div>

@@ -104,7 +104,7 @@ const Gift = () => {
     try {
       await axios.post(`${API}/api/gifts/createGifts`, formData);
       setShowModal(false);
-      setNewGift({ name: '', price: '', category: '', image: null });
+      setNewGift({ name: '', price: '', category: '', image: '' });
       fetchGifts();
     } catch (err) {
       console.error('Add Gift Error:', err);

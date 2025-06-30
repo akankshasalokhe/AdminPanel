@@ -2,11 +2,110 @@ import React from 'react';
 import { CContainer, CRow, CCol, CCard, CCardBody } from '@coreui/react';
 import './ProfilePage.css';
 
+const SectionCard = ({ title, children }) => (
+  <CCard className="info-card mb-3">
+    <CCardBody>
+      <h5>{title}</h5>
+      {children}
+    </CCardBody>
+  </CCard>
+);
+
+const InfoItem = ({ label, value }) => (
+  <p><strong>{label}:</strong> {value}</p>
+);
+
+const ColumnInfoGroup = ({ data }) => (
+  <CCol md={4}>
+    {data.map(({ label, value }, idx) => (
+      <div className="info-item" key={idx}>
+        <label>{label}</label>
+        <span>{value}</span>
+      </div>
+    ))}
+  </CCol>
+);
+
+const StatusItem = ({ label, value }) => (
+  <div className="status-item">
+    <label>{label}</label>
+    <span>{value}</span>
+  </div>
+);
+
 const ProfilePage = () => {
+  const basicInfo = [
+    { label: "Mobile", value: "1234567890" },
+    { label: "Email", value: "user@example.com" },
+    { label: "Gender", value: "Female" },
+    { label: "Age", value: "25" },
+    { label: "Height", value: "5'4\"" },
+    { label: "DOB", value: "1999-01-01" },
+    { label: "Login Type", value: "Google" },
+    { label: "Location", value: "Mumbai, India" },
+    { label: "Zodiac", value: "Aries" },
+  ];
+
+  const personalInfo = [
+    { label: "Occupation", value: "Developer" },
+    { label: "Education", value: "B.Tech" },
+    { label: "Hobbies", value: "Reading, Travel" },
+    { label: "Body Type", value: "Slim" },
+    { label: "Religion", value: "Hindu" },
+    { label: "Language", value: "English, Marathi" },
+    { label: "Smoking", value: "No" },
+    { label: "Drinking", value: "Occasionally" },
+    { label: "Income", value: "₹8 LPA" },
+    { label: "Workout", value: "Regular" },
+    { label: "Dietary Preference", value: "Vegetarian" },
+    { label: "Social Media", value: "@asmita" },
+    { label: "Personality Type", value: "INFJ" },
+  ];
+
+  const preferences = [
+    { label: "Preferred Height", value: "5'6\" - 6'0\"" },
+    { label: "Dating Intentions", value: "Serious" },
+    { label: "Children", value: "Open to" },
+    { label: "Drugs", value: "No" },
+    { label: "Smoking", value: "No" },
+    { label: "Drinking", value: "Occasionally" },
+    { label: "Political Views", value: "Liberal" },
+  ];
+
+  const accountInfoColumns = [
+    [
+      { label: "Account Created", value: "Jan 1, 2023" },
+      { label: "Last Login", value: "Jun 15, 2025" },
+      { label: "Device", value: "iPhone 14" },
+    ],
+    [
+      { label: "Country", value: "India" },
+      { label: "Provider", value: "Google" },
+      { label: "Verification Status", value: "Verified" },
+    ],
+    [
+      { label: "Preference", value: "Serious Dating" },
+      { label: "Special Tag", value: "Featured User" },
+    ]
+  ];
+
+  const accountStatus = [
+    { label: "VIP Status", value: "No VIP" },
+    { label: "Block Status", value: "Not Blocked" },
+    { label: "KYC Status", value: "Approved" },
+    { label: "Online Status", value: "Online" },
+  ];
+
+  const galleryItems = [
+    { type: 'image', src: "https://i.pinimg.com/236x/db/1f/9a/db1f9a3eaca4758faae5f83947fa807c.jpg", alt: "Gallery 1" },
+    { type: 'video', src: "video.mp4", alt: "Gallery Video" },
+    { type: 'image', src: "https://i.pinimg.com/236x/db/1f/9a/db1f9a3eaca4758faae5f83947fa807c.jpg", alt: "Gallery 2" },
+  ];
+
   return (
     <CContainer fluid>
       <CRow>
-        {/* Left Section (Profile + Info) */}
+        {/* Left Section */}
         <CCol xs={12} md={4} lg={3}>
           <div className="img-div">
             <img
@@ -19,100 +118,56 @@ const ProfilePage = () => {
             <p style={{ color: "gray", fontSize: "14px" }}>asdfgh</p>
           </div>
 
-          {/* Basic Info */}
-          <CCard className="info-card mb-3">
-            <CCardBody>
-              <h5>Basic Info</h5>
-              <p><strong>Mobile:</strong> 1234567890</p>
-              <p><strong>Email:</strong> user@example.com</p>
-              <p><strong>Gender:</strong> Female</p>
-              <p><strong>Age:</strong> 25</p>
-              <p><strong>Height:</strong> 5'4"</p>
-              <p><strong>DOB:</strong> 1999-01-01</p>
-              <p><strong>Login Type:</strong> Google</p>
-              <p><strong>Location:</strong> Mumbai, India</p>
-              <p><strong>Zodiac:</strong> Aries</p>
-            </CCardBody>
-          </CCard>
+          <SectionCard title="Basic Info">
+            {basicInfo.map(({ label, value }, idx) => (
+              <InfoItem key={idx} label={label} value={value} />
+            ))}
+          </SectionCard>
 
-          {/* Personal Info */}
-          <CCard className="info-card mb-3">
-            <CCardBody>
-              <h5>Personal Info</h5>
-              <p><strong>Occupation:</strong> Developer</p>
-              <p><strong>Education:</strong> B.Tech</p>
-              <p><strong>Hobbies:</strong> Reading, Travel</p>
-              <p><strong>Body Type:</strong> Slim</p>
-              <p><strong>Religion:</strong> Hindu</p>
-              <p><strong>Language:</strong> English, Marathi</p>
-              <p><strong>Smoking:</strong> No</p>
-              <p><strong>Drinking:</strong> Occasionally</p>
-              <p><strong>Income:</strong> ₹8 LPA</p>
-              <p><strong>Workout:</strong> Regular</p>
-              <p><strong>Dietary Preference:</strong> Vegetarian</p>
-              <p><strong>Social Media:</strong> @asmita</p>
-              <p><strong>Personality Type:</strong> INFJ</p>
-            </CCardBody>
-          </CCard>
+          <SectionCard title="Personal Info">
+            {personalInfo.map(({ label, value }, idx) => (
+              <InfoItem key={idx} label={label} value={value} />
+            ))}
+          </SectionCard>
 
-          {/* Preferences */}
-          <CCard className="info-card mb-3">
-            <CCardBody>
-              <h5>Preferences</h5>
-              <p><strong>Preferred Height:</strong> 5'6" - 6'0"</p>
-              <p><strong>Dating Intentions:</strong> Serious</p>
-              <p><strong>Children:</strong> Open to</p>
-              <p><strong>Drugs:</strong> No</p>
-              <p><strong>Smoking:</strong> No</p>
-              <p><strong>Drinking:</strong> Occasionally</p>
-              <p><strong>Political Views:</strong> Liberal</p>
-            </CCardBody>
-          </CCard>
+          <SectionCard title="Preferences">
+            {preferences.map(({ label, value }, idx) => (
+              <InfoItem key={idx} label={label} value={value} />
+            ))}
+          </SectionCard>
         </CCol>
 
         {/* Right Section */}
         <CCol xs={12} md={8} lg={9}>
-          {/* Account Information */}
           <CCard className="mb-4 profile-card">
             <CCardBody>
               <h5>Account Information</h5>
               <CRow>
-                <CCol md={4}>
-                  <div className="info-item"><label>Account Created</label><span>Jan 1, 2023</span></div>
-                  <div className="info-item"><label>Last Login</label><span>Jun 15, 2025</span></div>
-                  <div className="info-item"><label>Device</label><span>iPhone 14</span></div>
-                </CCol>
-                <CCol md={4}>
-                  <div className="info-item"><label>Country</label><span>India</span></div>
-                  <div className="info-item"><label>Provider</label><span>Google</span></div>
-                  <div className="info-item"><label>Verification Status</label><span>Verified</span></div>
-                </CCol>
-                <CCol md={4}>
-                  <div className="info-item"><label>Preference</label><span>Serious Dating</span></div>
-                  <div className="info-item"><label>Special Tag</label><span>Featured User</span></div>
-                </CCol>
+                {accountInfoColumns.map((col, idx) => (
+                  <ColumnInfoGroup key={idx} data={col} />
+                ))}
               </CRow>
             </CCardBody>
           </CCard>
 
-          {/* Account Status */}
           <CCard className="mb-4 profile-card">
             <CCardBody>
               <h5>Account Status</h5>
               <CRow>
-                <CCol md={6}>
-                  <div className="status-item"><label>VIP Status</label><span>No VIP</span></div>
-                  <div className="status-item"><label>Block Status</label><span>Not Blocked</span></div>
-                </CCol>
-                <CCol md={6}>
-                  <div className="status-item"><label>KYC Status</label><span>Approved</span></div>
-                  <div className="status-item"><label>Online Status</label><span>Online</span></div>
-                </CCol>
+                {accountStatus.slice(0, 2).map((item, idx) => (
+                  <CCol md={6} key={idx}>
+                    <StatusItem {...item} />
+                  </CCol>
+                ))}
+                {accountStatus.slice(2).map((item, idx) => (
+                  <CCol md={6} key={idx + 2}>
+                    <StatusItem {...item} />
+                  </CCol>
+                ))}
               </CRow>
             </CCardBody>
           </CCard>
 
-          {/* KYC Documents */}
           <CCard className="mb-4 profile-card">
             <CCardBody>
               <h5>KYC Document</h5>
@@ -123,27 +178,29 @@ const ProfilePage = () => {
             </CCardBody>
           </CCard>
 
-          {/* Gallery */}
           <CCard className="mb-4 profile-card">
             <CCardBody>
               <h5>Gallery</h5>
               <div className="gallery-grid">
-                <img src="https://i.pinimg.com/236x/db/1f/9a/db1f9a3eaca4758faae5f83947fa807c.jpg" alt="Gallery 1" />
-                <video controls width="150" height="100">
-                  <source src="video.mp4" type="video/mp4" />
-                  Your browser does not support video.
-                </video>
-                <img src="https://i.pinimg.com/236x/db/1f/9a/db1f9a3eaca4758faae5f83947fa807c.jpg" alt="Gallery 2" />
+                {galleryItems.map((item, idx) =>
+                  item.type === 'image' ? (
+                    <img key={idx} src={item.src} alt={item.alt} />
+                  ) : (
+                    <video key={idx} controls width="150" height="100">
+                      <source src={item.src} type="video/mp4" />
+                      Your browser does not support video.
+                    </video>
+                  )
+                )}
               </div>
             </CCardBody>
           </CCard>
 
-          {/* User Activity */}
           <CCard className="mb-4 profile-card">
             <CCardBody>
               <h5>User Activity</h5>
               <ul>
-                {/* Add activity logs */}
+                {/* Add activity logs here */}
               </ul>
             </CCardBody>
           </CCard>

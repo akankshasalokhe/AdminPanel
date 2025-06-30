@@ -16,6 +16,7 @@ import {
   Typography
 } from '@mui/material';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import { useNavigate } from 'react-router-dom';
 
 const sampleData = [
   { id: 1, user: 'John Doe', messages: 12, datetime: '2025-06-21 14:30', status: 'Active' },
@@ -24,6 +25,11 @@ const sampleData = [
 ];
 
 const ChatLogPage = () => {
+  const navigate = useNavigate();
+
+  const handleViewDetails = (userId) => {
+    navigate(`../profile/${userId}`); 
+  };
   return (
     <div style={{ width: '100%', height: '522px' }}>
       <CCard style={{
@@ -76,7 +82,9 @@ const ChatLogPage = () => {
                       borderRadius: 2,
                       textTransform: 'none',
                       px: 2
-                    }}>
+                    }}
+                              onClick={() => handleViewDetails(user._id)} 
+                    >
                       View Details
                     </Button>
                   </TableCell>

@@ -13,7 +13,7 @@ const Gift = () => {
   const [gifts, setGifts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
-  const [newGift, setNewGift] = useState({ name: '', price: '', category: '', image: null });
+  const [newGift, setNewGift] = useState({ name: '', price: '', category: '', image: '' });
   const [errors, setErrors] = useState({});
   const [sortKey, setSortKey] = useState('');
   const [currentPage, setCurrentPage] = useState(1);

@@ -21,15 +21,16 @@
 }
 
 .summeryCard {
-  display: flex;
-  gap: 20px;
+  width: 300px;
+  
+  /* display: flex; */
+  /* gap: 20px; */
   margin-bottom: 24px;
   flex-wrap: wrap;
 }
 
 .summary-card {
   background: #8979FF24;
-  padding: 20px;
   flex: 1;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
@@ -80,29 +81,38 @@
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
 }
-
+/* 
 .giftCard {
   background: #ffffff;
   padding: 16px;
   border-radius: 12px;
   border: 1px solid #e0e0e0;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  box-shadow: 0 1px 4px #1b1e2031;
   text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+} */
 
 .giftCard:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+.giftCard {
+  width: 200px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: #fff;
+  transition: transform 0.2s ease;
+}
+
 .giftCard img {
   width: 100%;
-  height: 160px;
-  object-fit:cover;
-  border-radius: 10px;
-  margin-bottom: 6px;
-  transition: transform 0.2s ease-in-out;
+  height: 150px; /* adjust height as needed */
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 .edit-btn{
   margin-left: 72px;

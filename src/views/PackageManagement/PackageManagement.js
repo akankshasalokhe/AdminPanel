@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Package.css';
 import { FaCrown, FaGem, FaMedal, FaStar } from 'react-icons/fa';
 import { CTable, CTableHead, CTableRow, CTableHeaderCell, CTableBody, CTableDataCell, CBadge, CButton, CModal, CModalHeader, CModalBody } from '@coreui/react'
+import { useNavigate } from 'react-router-dom';
 
 const packages = [
   {
@@ -54,6 +55,12 @@ const PackageManagement = () => {
    const [visible, setVisible] = useState(false)
   const [selectedPackage, setSelectedPackage] = useState(null)
 
+   const navigate = useNavigate()
+
+  const handleEdit = (pkg) => {
+    navigate(`/edit-package/${pkg.id}`)
+  }
+
   const openFeatureModal = (pkg) => {
     setSelectedPackage(pkg)
     setVisible(true)
@@ -89,7 +96,7 @@ const PackageManagement = () => {
                 </span>
               </div>
               <div className="card-buttons">
-                <button className="btn">Edit</button>
+              <CButton color="primary" size="sm" className="me-2" onClick={() => handleEdit(pkg)}>Edit</CButton>
                 <button className="btn" style={{ backgroundColor: '#e74c3c' }}>Delete</button>
               </div>
             </div>
@@ -155,3 +162,9 @@ const PackageManagement = () => {
 };
 
 export default PackageManagement;
+
+
+
+
+   
+

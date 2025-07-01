@@ -1,0 +1,188 @@
+.edit-package-page {
+  margin: auto;
+  padding-bottom: 40px;
+}
+.edit-package-container .silver {
+  background-color: #00001a08;
+}
+.edit-package-container .golden {
+  background-color: #D0C30415;
+}
+.edit-package-container .premium {
+  background-color: #8979FF15;
+}
+.edit-package-container .vip {
+  background-color: #F0000010;
+}
+
+.package-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.top-nav {
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  font-weight: 600;
+  border-radius: 30px;
+}
+
+.package-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.package-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 28px;
+  font-weight: 800;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.package-title{
+  color: gold;
+  font-size: 30px;
+  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+  }
+  to {
+    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 1));
+  }
+}
+
+.subtext {
+  color: #666;
+  font-size: 15px;
+  margin-top: 8px;
+}
+
+.search-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.floating-search {
+  position: relative;
+  flex: 1;
+  margin-left: 12px;
+}
+
+.floating-search input {
+  padding: 14px 14px 14px 36px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  background: white;
+}
+
+.floating-search label {
+  position: absolute;
+  top: 12px;
+  left: 36px;
+  font-size: 14px;
+  color: #999;
+  pointer-events: none;
+  transition: 0.2s ease all;
+  background: white;
+  padding: 0 4px;
+  z-index: 1;
+}
+
+.floating-search input:focus + label,
+.floating-search input:not(:placeholder-shown) + label {
+  top: -8px;
+  font-size: 11px;
+  color: #555;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #888;
+}
+
+.feature-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.feature-checklist::-webkit-scrollbar {
+  width: 6px;
+}
+
+.feature-checklist::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.feature-item {
+  background-color: #f9f9f9;
+  padding: 12px 18px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  border: 1px solid #e0e0e0;
+}
+
+.feature-item:hover {
+  background-color: #f0f0f0;
+  border-color: #d2d2d2;
+}
+
+.feature-item input[type='checkbox']:checked + label {
+  font-weight: 600;
+  color: #2c7be5;
+}
+
+.action-footer {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.loading-text {
+  text-align: center;
+  font-weight: 600;
+  margin-top: 100px;
+}
+
+/* 🟢 Backgrounds by package type */
+
+
+/* Colored title text and icons */
+.silver .package-title,
+.silver .crown-icon {
+  color: #7f7f7f;
+}
+
+.golden .package-title,
+.golden .crown-icon {
+  color: #D0C304;
+}
+
+.premium .package-title,
+.premium .crown-icon {
+  color: #8979FF;
+}
+
+.vip .package-title,
+.vip .crown-icon {
+  color: #F00000;
+}

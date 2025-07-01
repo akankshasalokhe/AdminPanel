@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import axios from "axios";
 
-const RefundPolicy= () => {
-  const [policy, setPolicy] = useState("");
+const refundPolicy= () => {
+  const [refundpolicy, setRefundPolicy] = useState("");
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
@@ -11,7 +11,7 @@ const RefundPolicy= () => {
     axios
       .get("http://localhost:2000/api/refundPolicy/getRefundPolicy")
       .then((res) => {
-        setPolicy(res.data?.content || "");
+        setRefundPolicy(res.data?.content || "");
         setLoading(false);
       })
       .catch((err) => {
@@ -23,7 +23,7 @@ const RefundPolicy= () => {
   const handleSaveOrUpdate = () => {
     setSaving(true);
     axios
-      .post("http://localhost:2000/api/refundPolicy/saveRefundPolicy", { content: policy })
+      .post("http://localhost:2000/api/refundPolicy/saveRefundPolicy", { content: refundpolicy })
       .then(() => {
         alert("Refund Policy saved/updated successfully.");
       })
@@ -51,8 +51,8 @@ const RefundPolicy= () => {
         <>
           <Editor
             apiKey="haa6xie6rgv94ky9rf43lu1n4zwcv5h0awr0vresbz2u4r8p"
-            value={policy}
-            onEditorChange={(content) => setPolicy(content)}
+            value={refundpolicy}
+            onEditorChange={(content) => setRefundPolicy(content)}
             init={{
               height: 400,
               menubar: false,
@@ -88,5 +88,5 @@ const RefundPolicy= () => {
   );
 };
 
-export default RefundPolicy
+export default refundPolicy
 ;

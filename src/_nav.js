@@ -484,6 +484,12 @@ const _nav = [
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
   },
   {
+    component: CNavItem,
+    name: 'Refund Policy',
+    to: '/refund-policy',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+  },
+  {
     component: CNavGroup,
     name: 'Package',
     icon: <CIcon icon={cilStar} customClassName="nav-icon" />,

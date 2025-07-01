@@ -30,6 +30,9 @@ const Crossing = React.lazy(()=>import('./views/Crossing/Crossing'))
 
 const PrivacyPolicy = React.lazy(() => import('./views/PrivacyPolicy/PrivacyPolicy'))
 const TermsAndConditions = React.lazy(() => import('./views/TermsConditions/TermsAndConditions'))
+const RefundPolicy = React.lazy(() => import('./views/RefundPolicy/refundPolicy'))
+
+
 // Icons
 const CoreUIIcons = React.lazy(() => import('./views/icons/coreui-icons/CoreUIIcons'))
 const Flags = React.lazy(() => import('./views/icons/flags/Flags'))
@@ -78,6 +81,7 @@ const routes = [
   // Privacy Policy
   {path: '/privacy-policy', name: 'Privacy Policy', element: PrivacyPolicy},
   {path: '/terms-and-conditions', name: 'Terms and Conditions', element: TermsAndConditions},
+  {path: '/refund-policy', name: 'Refund Policy', element: RefundPolicy},
 
   // Icons
   { path: '/icons', exact: true, name: 'Icons', element: CoreUIIcons },

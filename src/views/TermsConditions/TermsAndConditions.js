@@ -9,7 +9,7 @@ const TermsAndConditions = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:2000/api/privacyPolicy/get")
+      .get("http://localhost:2000/api/termsAndConditions/getTermsAndConditions")
       .then((res) => {
         setConditions(res.data?.content || "");
         setLoading(false);
@@ -23,7 +23,7 @@ const TermsAndConditions = () => {
   const handleSaveOrUpdate = () => {
     setSaving(true);
     axios
-      .post("http://localhost:2000/api/privacyPolicy/save", { content: conditions })
+      .post("http://localhost:2000/api/termsAndConditions/saveTermsAndConditions", { content: conditions })
       .then(() => {
         alert("Terms and Conditions saved/updated successfully.");
       })

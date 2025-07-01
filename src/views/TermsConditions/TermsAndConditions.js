@@ -9,7 +9,7 @@ const TermsAndConditions = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:2000/api/termsAndConditions/getTermsAndConditions")
+      .get("https://datingapp-p2d5.onrender.com/api/termsAndConditions/getTermsAndConditions")
       .then((res) => {
         setConditions(res.data?.content || "");
         setLoading(false);
@@ -23,7 +23,7 @@ const TermsAndConditions = () => {
   const handleSaveOrUpdate = () => {
     setSaving(true);
     axios
-      .post("http://localhost:2000/api/termsAndConditions/saveTermsAndConditions", { content: conditions })
+      .post("https://datingapp-p2d5.onrender.com/api/termsAndConditions/saveTermsAndConditions", { content: conditions })
       .then(() => {
         alert("Terms and Conditions saved/updated successfully.");
       })

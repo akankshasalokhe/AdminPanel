@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:2000/api/privacyPolicy/getPrivacyPolicy")
+      .get("https://datingapp-p2d5.onrender.com/api/privacyPolicy/getPrivacyPolicy")
       .then((res) => {
         setPolicy(res.data?.content || "");
         setLoading(false);
@@ -23,7 +23,7 @@ const PrivacyPolicy = () => {
   const handleSaveOrUpdate = () => {
     setSaving(true);
     axios
-      .post("http://localhost:2000/api/privacyPolicy/savePrivacyPolicy", { content: policy })
+      .post("https://datingapp-p2d5.onrender.com/api/privacyPolicy/savePrivacyPolicy", { content: policy })
       .then(() => {
         alert("Privacy Policy saved/updated successfully.");
       })

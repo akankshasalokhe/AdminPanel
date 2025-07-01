@@ -9,7 +9,7 @@ const refundPolicy= () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:2000/api/refundPolicy/getRefundPolicy")
+      .get("https://datingapp-p2d5.onrender.com/api/refundPolicy/getRefundPolicy")
       .then((res) => {
         setRefundPolicy(res.data?.content || "");
         setLoading(false);
@@ -23,7 +23,7 @@ const refundPolicy= () => {
   const handleSaveOrUpdate = () => {
     setSaving(true);
     axios
-      .post("http://localhost:2000/api/refundPolicy/saveRefundPolicy", { content: refundpolicy })
+      .post("https://datingapp-p2d5.onrender.com/api/refundPolicy/saveRefundPolicy", { content: refundpolicy })
       .then(() => {
         alert("Refund Policy saved/updated successfully.");
       })

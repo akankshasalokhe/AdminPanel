@@ -27,6 +27,9 @@ const ChatInterection = React.lazy(() => import('./views/ChatAndIntereaction/cha
 const ChatLogPage = React.lazy(()=>import('./views/ChatAndIntereaction/ChatLogPage'))
 
 const Crossing = React.lazy(()=>import('./views/Crossing/Crossing'))
+
+const PrivacyPolicy = React.lazy(() => import('./views/PrivacyPolicy/PrivacyPolicy'))
+const TermsAndConditions = React.lazy(() => import('./views/TermsConditions/TermsAndConditions'))
 // Icons
 const CoreUIIcons = React.lazy(() => import('./views/icons/coreui-icons/CoreUIIcons'))
 const Flags = React.lazy(() => import('./views/icons/flags/Flags'))
@@ -71,6 +74,11 @@ const routes = [
 
   //crossing
   { path:'/crossing',name:'Crossing',element:Crossing},
+
+  // Privacy Policy
+  {path: '/privacy-policy', name: 'Privacy Policy', element: PrivacyPolicy},
+  {path: '/terms-and-conditions', name: 'Terms and Conditions', element: TermsAndConditions},
+
   // Icons
   { path: '/icons', exact: true, name: 'Icons', element: CoreUIIcons },
   { path: '/icons/coreui-icons', name: 'CoreUI Icons', element: CoreUIIcons },

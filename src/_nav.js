@@ -471,6 +471,19 @@ const _nav = [
   },
   
   {
+    component: CNavItem,
+    name: 'Privacy Policy',
+    to: '/privacy-policy',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+   
+  },
+  {
+    component: CNavItem,
+    name: 'Terms and Conditions',
+    to: '/terms-and-conditions',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+  },
+  {
     component: CNavGroup,
     name: 'Package',
     icon: <CIcon icon={cilStar} customClassName="nav-icon" />,

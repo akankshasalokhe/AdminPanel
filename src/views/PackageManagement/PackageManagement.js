@@ -14,7 +14,9 @@ import {
   CModalHeader,
   CModalBody
 } from '@coreui/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { FaEdit, FaTrash } from 'react-icons/fa';
+
 
 const packages = [
   {
@@ -27,7 +29,6 @@ const packages = [
     duration: '1 Month',
     subscribers: 150,
     revenue: '₹ 15,000',
-    features: ['Basic Support', 'Limited Access']
   },
   {
     id: 2,
@@ -39,7 +40,6 @@ const packages = [
     duration: '1 Month',
     subscribers: 100,
     revenue: '₹ 25,000',
-    features: ['Priority Support', 'Exclusive Content']
   },
   {
     id: 3,
@@ -51,7 +51,6 @@ const packages = [
     duration: '1 Month',
     subscribers: 60,
     revenue: '₹ 30,000',
-    features: ['All Access', '1-on-1 Consultation']
   },
   {
     id: 4,
@@ -63,42 +62,32 @@ const packages = [
     duration: '1 Month',
     subscribers: 40,
     revenue: '₹ 40,000',
-    features: ['All Premium Features', 'Direct Support Line']
   },
 ];
 
 const PackageManagement = () => {
   const [visible, setVisible] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(null);
-
   const [editModalVisible, setEditModalVisible] = useState(false);
-  const [editFormData, setEditFormData] = useState({
+  const [editForm, setEditForm] = useState({
     id: '',
     name: '',
     price: '',
     duration: '',
     subscribers: '',
     revenue: '',
-    status: ''
+    status: '',
   });
 
+  const navigate = useNavigate();
+
   const handleEdit = (pkg) => {
-    setEditFormData({
-      id: pkg.id,
-      name: pkg.name,
-      price: pkg.price,
-      duration: pkg.duration,
-      subscribers: pkg.subscribers,
-      revenue: pkg.revenue,
-      status: pkg.status
-    });
-    setEditModalVisible(true);
+    navigate(`/edit-package/${pkg.id}`);
   };
 
-  const handleEditSubmit = () => {
-    console.log('Updated Package Data:', editFormData);
-    // TODO: Replace with API call
-    setEditModalVisible(false);
+  const handleTableEdit = (pkg) => {
+    setEditForm({ ...pkg });
+    setEditModalVisible(true);
   };
 
   return (
@@ -120,22 +109,15 @@ const PackageManagement = () => {
               <div className="price">{pkg.price}</div>
               <div className="duration">{pkg.duration}</div>
             </div>
+
             <div className="package-bottom">
               <div className="metrics">
-                <span>
-                  <strong>Subscribers:</strong> {pkg.subscribers}
-                </span>
-                <span className="revenue">
-                  <strong>Revenue:</strong> {pkg.revenue}
-                </span>
+                <span><strong>Subscribers:</strong> {pkg.subscribers}</span>
+                <span className="revenue"><strong>Revenue:</strong> {pkg.revenue}</span>
               </div>
               <div className="card-buttons">
-                <CButton color="primary" size="sm" className="me-2" onClick={() => handleEdit(pkg)}>
-                  Edit
-                </CButton>
-                <button className="btn" style={{ backgroundColor: '#e74c3c' }}>
-                  Delete
-                </button>
+                <CButton color="primary" size="sm" className="me-2" onClick={() => handleEdit(pkg)}>Edit</CButton>
+                <button className="btn" style={{ backgroundColor: '#e74c3c' }}>Delete</button>
               </div>
             </div>
           </div>
@@ -143,7 +125,7 @@ const PackageManagement = () => {
       </div>
 
       {/* Table */}
-      <div className="package-table mt-4">
+      <div className="package-table">
         <CTable hover responsive>
           <CTableHead>
             <CTableRow>
@@ -168,32 +150,39 @@ const PackageManagement = () => {
                 <CTableDataCell>{pkg.subscribers}</CTableDataCell>
                 <CTableDataCell style={{ color: 'green' }}>{pkg.revenue}</CTableDataCell>
                 <CTableDataCell>
-                  <CBadge color="success" style={{ borderRadius: '30px' }}>
-                    {pkg.status}
-                  </CBadge>
+                  <CBadge  style={{ borderRadius: '30px',backgroundColor: "#1AA01E52" }}>{pkg.status}</CBadge>
                 </CTableDataCell>
                 <CTableDataCell>
                   <Link to={`/package-details/${pkg.id}`}>
-                    <CButton color="info" size="sm">View Features</CButton>
+                    <CButton color="white" size="sm">View Features</CButton>
                   </Link>
                 </CTableDataCell>
                 <CTableDataCell>
-                  <CButton color="primary" size="sm" className="me-2" onClick={() => handleEdit(pkg)}>Edit</CButton>
-                  <CButton color="danger" size="sm">Delete</CButton>
-                </CTableDataCell>
+                    <CButton
+                      color="primary"
+                      size="sm"
+                      className="me-2"
+                      onClick={() => handleTableEdit(pkg)}
+                    >
+                      <FaEdit className="me-1" />
+                    </CButton>
+                    <CButton color="danger" size="sm">
+                      <FaTrash className="me-1" />
+                    </CButton>
+                  </CTableDataCell>
               </CTableRow>
             ))}
           </CTableBody>
         </CTable>
       </div>
 
-      {/* View Features Modal */}
+      {/* Feature Modal */}
       <CModal visible={visible} onClose={() => setVisible(false)}>
         <CModalHeader onClose={() => setVisible(false)}>
           <strong>{selectedPackage?.name} Features</strong>
         </CModalHeader>
         <CModalBody>
-          {selectedPackage?.features.map((feat, idx) => (
+          {selectedPackage?.features?.map((feat, idx) => (
             <div key={idx} className="feature-pill">{feat}</div>
           ))}
         </CModalBody>
@@ -202,42 +191,82 @@ const PackageManagement = () => {
       {/* Edit Modal */}
       <CModal visible={editModalVisible} onClose={() => setEditModalVisible(false)}>
         <CModalHeader onClose={() => setEditModalVisible(false)}>
-          <strong>Edit Package</strong>
+          <strong>Edit Package: {editForm.name}</strong>
         </CModalHeader>
         <CModalBody>
-          <div className="edit-form">
-            <div className="form-group mb-2">
-              <label>Package Name</label>
-              <input className="form-control" value={editFormData.name} onChange={(e) => setEditFormData({ ...editFormData, name: e.target.value })} />
+          <form>
+            <div className="mb-3">
+              <label>Name</label>
+              <input
+                type="text"
+                className="form-control"
+                value={editForm.name}
+                onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
+              />
             </div>
-            <div className="form-group mb-2">
+            <div className="mb-3">
               <label>Price</label>
-              <input className="form-control" value={editFormData.price} onChange={(e) => setEditFormData({ ...editFormData, price: e.target.value })} />
+              <input
+                type="text"
+                className="form-control"
+                value={editForm.price}
+                onChange={(e) => setEditForm({ ...editForm, price: e.target.value })}
+              />
             </div>
-            <div className="form-group mb-2">
+            <div className="mb-3">
               <label>Duration</label>
-              <input className="form-control" value={editFormData.duration} onChange={(e) => setEditFormData({ ...editFormData, duration: e.target.value })} />
+              <input
+                type="text"
+                className="form-control"
+                value={editForm.duration}
+                onChange={(e) => setEditForm({ ...editForm, duration: e.target.value })}
+              />
             </div>
-            <div className="form-group mb-2">
+            <div className="mb-3">
               <label>Subscribers</label>
-              <input className="form-control" value={editFormData.subscribers} onChange={(e) => setEditFormData({ ...editFormData, subscribers: e.target.value })} />
+              <input
+                type="number"
+                className="form-control"
+                value={editForm.subscribers}
+                onChange={(e) => setEditForm({ ...editForm, subscribers: e.target.value })}
+              />
             </div>
-            <div className="form-group mb-2">
+            <div className="mb-3">
               <label>Revenue</label>
-              <input className="form-control" value={editFormData.revenue} onChange={(e) => setEditFormData({ ...editFormData, revenue: e.target.value })} />
+              <input
+                type="text"
+                className="form-control"
+                value={editForm.revenue}
+                onChange={(e) => setEditForm({ ...editForm, revenue: e.target.value })}
+              />
             </div>
-            <div className="form-group mb-3">
+            <div className="mb-3">
               <label>Status</label>
-              <select className="form-control" value={editFormData.status} onChange={(e) => setEditFormData({ ...editFormData, status: e.target.value })}>
-                <option>Active</option>
-                <option>Inactive</option>
+              <select
+                className="form-control"
+                value={editForm.status}
+                onChange={(e) => setEditForm({ ...editForm, status: e.target.value })}
+              >
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
               </select>
             </div>
+
             <div className="d-flex justify-content-end">
-              <CButton color="secondary" className="me-2" onClick={() => setEditModalVisible(false)}>Cancel</CButton>
-              <CButton color="primary" onClick={handleEditSubmit}>Save</CButton>
+              <CButton color="secondary" className="me-2" onClick={() => setEditModalVisible(false)}>
+                Cancel
+              </CButton>
+              <CButton
+                color="success"
+                onClick={() => {
+                  console.log('Updated Package Data:', editForm);
+                  setEditModalVisible(false);
+                }}
+              >
+                Save
+              </CButton>
             </div>
-          </div>
+          </form>
         </CModalBody>
       </CModal>
     </div>

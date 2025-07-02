@@ -489,33 +489,33 @@ const _nav = [
     to: '/refund-policy',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
   },
-  {
-    component: CNavGroup,
-    name: 'Package',
-    icon: <CIcon icon={cilStar} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: 'Gold',
-        to: '/login',
-      },
-      {
-        component: CNavItem,
-        name: 'Silver',
-        to: '/register',
-      },
-      {
-        component: CNavItem,
-        name: 'Premium',
-        to: '/404',
-      },
-      {
-        component: CNavItem,
-        name: 'VIP',
-        to: '/500',
-      },
-    ],
-  },
+  // {
+  //   component: CNavGroup,
+  //   name: 'Package',
+  //   icon: <CIcon icon={cilStar} customClassName="nav-icon" />,
+  //   items: [
+  //     {
+  //       component: CNavItem,
+  //       name: 'Gold',
+  //       to: '/login',
+  //     },
+  //     {
+  //       component: CNavItem,
+  //       name: 'Silver',
+  //       to: '/register',
+  //     },
+  //     {
+  //       component: CNavItem,
+  //       name: 'Premium',
+  //       to: '/404',
+  //     },
+  //     {
+  //       component: CNavItem,
+  //       name: 'VIP',
+  //       to: '/500',
+  //     },
+  //   ],
+  // },
   {
     component: CNavGroup,
     name: 'Support & Reporting',

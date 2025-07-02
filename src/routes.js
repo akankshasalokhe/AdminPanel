@@ -14,7 +14,7 @@ const Cards = React.lazy(() => import('./views/usermanagement/cards/Cards'))
 // Packages, Coins, Events
 const PackageManagement = React.lazy(() => import('./views/PackageManagement/PackageManagement'))
 const EditPackagePage = React.lazy(() => import('./views/PackageManagement/EditPackagePage'))
-
+const PackageDetailsPage = React.lazy(() => import('./views/PackageManagement/PackageDetailsPage'))
 
 const Coin = React.lazy(() => import('./views/Coin/Coin'))
 const EventManagement = React.lazy(() => import('./views/EventManagement/Event'))
@@ -67,6 +67,7 @@ const routes = [
   { path: '/wallet', name: 'Wallet', element: Wallet },
   { path: '/PackageManagement', name: 'Package Management', element: PackageManagement },
   { path: '/edit-package/:id', name: 'Edit Package', element: EditPackagePage },
+  { path: '/package-details/:id', name: 'Package Details', element: PackageDetailsPage },
 
   { path: '/coin', name: 'Coin', element: Coin },
 

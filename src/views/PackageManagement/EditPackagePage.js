@@ -1,19 +1,15 @@
+// src/pages/EditPackagePage.jsx
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import {
   CButton,
   CFormCheck,
   CContainer,
+  CCard,
 } from '@coreui/react'
-import {
-  FaCrown,
-  FaArrowLeft,
-  FaSearch,
-  FaStar,
-  FaGem,
-  FaMedal,
-} from 'react-icons/fa'
+import { FaArrowLeft, FaSearch } from 'react-icons/fa'
 import './EditPackage.css'
+import { mockPackages } from './mockData'
 
 const allFeatures = [
   'Unlimited Chats',
@@ -23,41 +19,12 @@ const allFeatures = [
   'Priority Support',
   'Access VIP Events',
   'Exclusive Content',
-]
-
-const mockPackages = [
-  {
-    id: 1,
-    name: 'Silver',
-    features: ['Unlimited Chats', 'Boost Profile'],
-  },
-  {
-    id: 2,
-    name: 'Golden',
-    features: ['Unlimited Chats', 'Boost Profile', 'See Who Viewed You'],
-  },
-  {
-    id: 3,
-    name: 'Premium',
-    features: [
-      'Unlimited Chats',
-      'Boost Profile',
-      'See Who Viewed You',
-      'Priority Support',
-    ],
-  },
-  {
-    id: 4,
-    name: 'VIP',
-    features: [
-      'Unlimited Chats',
-      'Boost Profile',
-      'See Who Viewed You',
-      'Verified Badge',
-      'Priority Support',
-      'Access VIP Events',
-    ],
-  },
+  'Ad-Free Experience',
+  'Rewind Last Swipe',
+  'Profile Insights',
+  'Daily Super Likes',
+  'Advanced Filters',
+  'Travel Mode',
 ]
 
 const EditPackagePage = () => {
@@ -88,11 +55,13 @@ const EditPackagePage = () => {
       features: selectedFeatures,
     }
     console.log('Saved:', updatedData)
+    // TODO: Replace with API call
   }
 
   const handleSelectAll = () => {
-    setSelectAll(!selectAll)
-    setSelectedFeatures(!selectAll ? [...allFeatures] : [])
+    const isAllSelected = selectedFeatures.length === allFeatures.length
+    setSelectAll(!isAllSelected)
+    setSelectedFeatures(!isAllSelected ? [...allFeatures] : [])
   }
 
   const filteredFeatures = allFeatures.filter((feat) =>
@@ -102,68 +71,61 @@ const EditPackagePage = () => {
   if (!packageData) return <div className="loading-text">Loading...</div>
 
   return (
-    <CContainer className='edit-package-container'>
-      <div className={`edit-package-page ${packageData.name.toLowerCase()}`}>
+    <CContainer className="edit-package-container">
+      <CCard className="edit-package-card">
+      <div className="edit-package-page">
         <div className="top-nav">
-        <CButton color="light" onClick={() => navigate(-1)} className="back-btn m-2">
-          <FaArrowLeft className="me-2" /> Back
-        </CButton>
-      </div>
-
-      <div className="package-container">
-        <div className="package-header">
-          <div className="package-title">
-            {packageData.name === 'Silver' && <FaMedal className="crown-icon" />}
-            {packageData.name === 'Golden' && <FaStar className="crown-icon" />}
-            {packageData.name === 'Premium' && <FaGem className="crown-icon" />}
-            {packageData.name === 'VIP' && <FaCrown className="crown-icon" />}
-            <span className="title-text">{packageData.name} Package</span>
-          </div>
-          <p className="subtext">
-            Select features to include in <strong>{packageData.name}</strong> package.
-          </p>
-        </div>
-
-        <div className="search-row">
-          <CFormCheck
-            id="selectAll"
-            label="Select All"
-            checked={selectedFeatures.length === allFeatures.length}
-            onChange={handleSelectAll}
-          />
-          <div className="floating-search">
-            <FaSearch className="search-icon" />
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              required
-              placeholder=" "
-            />
-            <label>Search Features</label>
-          </div>
-        </div>
-
-        <div className="feature-checklist">
-          {filteredFeatures.map((feat, index) => (
-            <div key={index} className="feature-item">
-              <CFormCheck
-                id={`feat-${index}`}
-                label={feat}
-                checked={selectedFeatures.includes(feat)}
-                onChange={() => handleToggleFeature(feat)}
-              />
-            </div>
-          ))}
-        </div>
-
-        <div className="action-footer">
-          <CButton color="primary" size="lg" onClick={handleSave}>
-            Save Changes
+          <CButton color="light" onClick={() => navigate(-1)} className="back-btn m-2">
+            <FaArrowLeft className="me-2" /> Back
           </CButton>
         </div>
+
+        <div className="package-container">
+          <p className="subtext text-center mb-3">
+            Select the features included in this package.
+          </p>
+
+          <div className="search-row">
+            <CFormCheck
+              id="selectAll"
+              label="Select All"
+              checked={selectedFeatures.length === allFeatures.length}
+              onChange={handleSelectAll}
+            />
+            <div className="floating-search">
+              <FaSearch className="search-icon" />
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                required
+                placeholder=" "
+              />
+              <label>Search Features</label>
+            </div>
+          </div>
+
+          <div className="feature-grid">
+            {filteredFeatures.map((feat, index) => (
+              <div key={index} className="feature-grid-item">
+                <CFormCheck
+                  id={`feat-${index}`}
+                  label={feat}
+                  checked={selectedFeatures.includes(feat)}
+                  onChange={() => handleToggleFeature(feat)}
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="action-footer">
+            <CButton color="primary" size="lg" onClick={handleSave}>
+              Save Changes
+            </CButton>
+          </div>
+        </div>
       </div>
-      </div>
+      </CCard>
     </CContainer>
   )
 }
